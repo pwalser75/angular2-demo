@@ -35,6 +35,11 @@ const cssPrefixer = require('gulp-autoprefixer');
 const cssMinify = require('gulp-cssnano');
 const runSequence = require('run-sequence');
 const cssConcat = require('gulp-concat-css');
+
+const watchify = require('watchify');
+const browserSync = require('browser-sync').create();
+const url = require('url');
+const proxy = require('proxy-middleware');
 	
 // Configuration
 

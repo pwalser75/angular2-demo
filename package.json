@@ -22,6 +22,7 @@
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
     "@types/core-js": "^0.9.37",
+    "browser-sync": "^2.18.8",
     "chai": "^3.5.0",
     "core-js": "^2.4.1",
     "del": "^2.2.2",
@@ -37,7 +38,9 @@
     "gulp-typescript": "^3.1.6",
     "gulp-uglify": "^2.1.2",
     "merge-stream": "^1.0.1",
+    "ncu": "^0.2.0",
     "node-normalize-scss": "^1.4.0",
+    "proxy-middleware": "^0.15.0",
     "reflect-metadata": "^0.1.10",
     "run-sequence": "^1.2.2",
     "rxjs": "5.2.0",
@@ -45,6 +48,8 @@
     "systemjs": "^0.20.0",
     "systemjs-builder": "^0.16.4",
     "typescript": "^2.2.1",
+    "url": "^0.11.0",
+    "watchify": "^3.9.0",
     "zone.js": "^0.8.5"
   },
   "dependencies": {
