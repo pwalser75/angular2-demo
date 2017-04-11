@@ -1,0 +1,7 @@
+node_modules
+build
+target/
+node/
+.gradle/
+node-v7.2.1-win-x64/
+.idea/

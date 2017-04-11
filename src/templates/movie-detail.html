@@ -1,0 +1,88 @@
+<div class="navbar navbar-default navbar-toolbar">
+	<div class="container">	
+	<div class="btn-toolbar" role="toolbar" aria-label="...">
+		<div class="btn-group" role="group" aria-label="..." >
+			<button type="button" class="btn btn-default">
+				<i class="fa fa-fw fa-pencil" aria-hidden="true"></i> Edit
+			</button>
+			<button type="button" class="btn btn-default">
+				<i class="fa fa-fw fa-print" aria-hidden="true"></i> Print
+			</button>
+
+			<div class="btn-group" role="group">
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				  <i class="fa fa-fw fa-share-alt" aria-hidden="true"></i> Share
+				  <b class="caret"></b>
+				</button>
+				<ul class="dropdown-menu">
+					<li>
+						<a href="#"><i class="fa fa-fw fa-stack-overflow" aria-hidden="true"></i> Stack Overflow</a>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<a href="#"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i> Facebook</a>
+					</li>
+					<li>
+						<a href="#"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i> Twitter</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+		<div class="btn-group" role="group" aria-label="..." >
+			<button type="button" class="btn btn-default">
+				<i class="fa fa-fw fa-pencil" aria-hidden="true"></i>
+			</button>
+			<button type="button" class="btn btn-default">
+				<i class="fa fa-fw fa-print" aria-hidden="true"></i>
+			</button>
+
+			<div class="btn-group" role="group">
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<i class="fa fa-fw fa-share-alt" aria-hidden="true"></i>
+					<b class="caret"></b>
+				</button>
+				<ul class="dropdown-menu">
+					<li>
+						<a href="#"><i class="fa fa-fw fa-stack-overflow" aria-hidden="true"></i> Stack Overflow</a>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<a href="#"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i> Facebook</a>
+					</li>
+					<li>
+						<a href="#"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i> Twitter</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	</div>
+</div>
+
+<p>
+<div class="container">		
+	
+	<i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
+	<i class="fa fa-circle-o-notch fa-spin fa-2x fa-fw"></i>
+	<i class="fa fa-refresh fa-spin fa-2x fa-fw"></i>
+
+	<p>
+	<div class="row">
+		
+		 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4">
+			<img ng-src="{{ctrl.movie.image}}" style="width: 100%">
+		 </div>
+		 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8">
+			<h1>{{ctrl.movie.title}}</h1>
+			<div class="size-l">
+				<b>{{ctrl.movie.year}}</b> | {{ctrl.movie.genres | commaSeparated}}
+			</div>
+			<rating value="ctrl.movie.rating" max="10"></rating>&nbsp;<b>{{ctrl.movie.rating}}</b>/10
+			<p>
+			<br>
+			{{ctrl.movie.plot}}
+		 </div>
+		 
+	</div>
+</div>
