@@ -48,10 +48,7 @@ const config = {
 	source: './src',
 	target: './build/frontend',
 	temp: './temp',
-	libs: {
-		source: 'lib/**/*',
-		target: 'lib'
-	},
+	libs:  'lib/**/*',
 	javascript: {
 		source: 'index.js',
 		target: 'bundle.js'
@@ -90,7 +87,7 @@ gulp.task('compile-typescript', [ 'copy-typescript' ], () => {
         .then(() => builder.buildStatic('app', config.target+'/'+config.javascript.target, {
             production: false,
             rollup: false
-        }))
+        }));
 });
 
 gulp.task('compile-stylesheets', () => {
@@ -110,11 +107,13 @@ gulp.task('copy-resources', () => {
 });
 
 gulp.task('copy-libs', () => {
-    return gulp.src([
-            'node_modules/core-js/client/shim.js',
-            'node_modules/zone.js/dist/zone.js',
-            'node_modules/reflect-metadata/Reflect.js'
-        ])
+    var npmLibs= gulp.src([
+        'node_modules/core-js/client/shim.js',
+        'node_modules/zone.js/dist/zone.js',
+        'node_modules/reflect-metadata/Reflect.js'
+    ]);
+    var libs= gulp.src(config.libs);
+    merge(npmLibs, libs)
         .pipe(concat('libs.js'))
         .pipe(gulp.dest(config.target));
 });
@@ -155,7 +154,7 @@ gulp.task('watch', ['build'], () => {
     var onChanged = function(event) {
 		var message='File ' + event.path + ' was ' + event.type + '. Running tasks...';
 		console.log(message);
-		notify({message: message, onLast: true })
+		notify(message);
 	};
 	
 	watchers.forEach(w => w.on('change', onChanged));

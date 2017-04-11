@@ -1,26 +1,27 @@
 <div id="title" class="wallpaper">
     <div class="container">
         <div class="jumbotron">
-            <h1>{{ctrl.title}}</h1>
-            <h3>{{ctrl.message}}</h3>
+            <h1>{{title}}</h1>
+            <h3>{{message}}</h3>
         </div>
     </div>
 </div>
 
 <div class="container">
     <p>
-    <div ng-show="!ctrl.getUserContext().getUser()">
+    <div *ngIf="!userContext.user">
         <h1>Welcome</h1>
         please use the menu action to login.
     </div>
-    <div ng-show="ctrl.getUserContext().getUser()">
-        <h1>Hello {{ctrl.getUserContext().getUser().name}}</h1>
+    <div *ngIf="userContext.user">
+        <h1>Hello {{userContext.user.name}}</h1>
         nice to have you back!
     </div>
     <p>
+        <!--
     <h3>Data from ExampleService</h3>
     <ul>
-        <li ng-repeat="item in ctrl.exampleData">
+        <li *ngFor="let item in exampleData">
             <b>{{item.commit.message}}</b>
             <p class="size-s">
                 on <span class="label label-primary">{{item.commit.author.date}}</span>
@@ -28,4 +29,5 @@
             </p>
         </li>
     </ul>
+        -->
 </div>

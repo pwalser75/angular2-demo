@@ -1,12 +1,12 @@
 import { Routes, RouterModule } from '@angular/router';
 
-import { ExampleComponent } from './example/example.component';
-import { AboutComponent } from './about/about.component';
+import { AboutComponent } from './components/about/about.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 const ROUTES: Routes = [
     {
         path: '',
-        component: ExampleComponent
+        component: WelcomeComponent
     },
     {
         path: 'about',
