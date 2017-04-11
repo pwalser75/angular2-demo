@@ -1,18 +1,23 @@
 import { Routes, RouterModule } from '@angular/router';
 
-import { AboutComponent } from './components/about/about.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { MovieListComponent } from './components/movie/movie-list/movie-list.component';
 
 const ROUTES: Routes = [
     {
         path: '',
+        redirectTo: '/welcome',
+        pathMatch: 'full'
+    },
+    {
+        path: 'welcome',
         component: WelcomeComponent
     },
     {
-        path: 'about',
-        component: AboutComponent
+        path: 'movies',
+        component: MovieListComponent
     }
 ];
 
-export const ROUTING = RouterModule.forRoot(ROUTES);
+export const ROUTING = RouterModule.forRoot(ROUTES,  {useHash: true});
 

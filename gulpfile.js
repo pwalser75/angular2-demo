@@ -41,14 +41,20 @@ const watchify = require('watchify');
 const browserSync = require('browser-sync').create();
 const url = require('url');
 const proxy = require('proxy-middleware');
-	
+
 // Configuration
 
 const config = {
 	source: './src',
 	target: './build/frontend',
 	temp: './temp',
-	libs:  'lib/**/*',
+	libs:  [
+        'node_modules/core-js/client/shim.js',
+        'node_modules/zone.js/dist/zone.js',
+        'node_modules/reflect-metadata/Reflect.js',
+        'node_modules/jquery/dist/jquery.min.js',
+        'node_modules/bootstrap/dist/js/bootstrap.min.js'
+    ],
 	javascript: {
 		source: 'index.js',
 		target: 'bundle.js'
@@ -107,15 +113,9 @@ gulp.task('copy-resources', () => {
 });
 
 gulp.task('copy-libs', () => {
-    var npmLibs= gulp.src([
-        'node_modules/core-js/client/shim.js',
-        'node_modules/zone.js/dist/zone.js',
-        'node_modules/reflect-metadata/Reflect.js'
-    ]);
-    var libs= gulp.src(config.libs);
-    merge(npmLibs, libs)
-        .pipe(concat('libs.js'))
-        .pipe(gulp.dest(config.target));
+    gulp.src(config.libs)
+	.pipe(concat('libs.js'))
+    .pipe(gulp.dest(config.target));
 });
 
 // build targets
@@ -148,20 +148,20 @@ gulp.task('watch', ['build'], () => {
     var watchers = [
 		gulp.watch(fileTypeMatcher(config.filetypes.javascript), [ 'compile-typescript' ]),
 		gulp.watch(fileTypeMatcher(config.filetypes.stylesheet), ['compile-stylesheets' ]),
-		gulp.watch(fileTypeMatcher(config.filetypes.resources), [ 'copy-resources' ]),
-		gulp.watch(config.source+'/'+config.libs.source, [ 'copy-libs' ])
+		gulp.watch(fileTypeMatcher(config.filetypes.resources), [ 'copy-resources' ])
 	];
     var onChanged = function(event) {
 		var message='File ' + event.path + ' was ' + event.type + '. Running tasks...';
 		console.log(message);
 		notify(message);
+        browserSync.reload();
 	};
-	
-	watchers.forEach(w => w.on('change', onChanged));
+
+    watchers.forEach(w => w.on('change', onChanged));
 });
 
 gulp.task('server', ['watch'], () => {
-	
+
 	var proxyOptions = url.parse(config.proxy.url);
     proxyOptions.route = config.proxy.route;
 

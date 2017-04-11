@@ -1,26 +1,33 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { AppComponent } from './app.component';
-import { WelcomeComponent } from './components/welcome/welcome.component';
-import { MenuComponent } from './menu/menu.component';
-
-import { AboutComponent } from './components/about/about.component';
-
-import { RatingComponent } from './widgets/rating.component';
-
-import { ROUTING } from './app.routes';
+import {NgModule} from "@angular/core";
+import {BrowserModule} from "@angular/platform-browser";
+import {AppComponent} from "./app.component";
+import {AppMenuComponent} from "./menu/app-menu.component";
+import {UserMenuComponent} from "./menu/user-menu.component";
+import {WelcomeComponent} from "./components/welcome/welcome.component";
+import {MovieListComponent} from "./components/movie/movie-list/movie-list.component";
+import {RatingComponent} from "./widgets/rating.component";
+import {CommaSeparatedPipe} from "./pipes/comma-separated.pipe";
+import {ApplicationService} from "./services/application.service";
+import {MovieService} from "./services/movie.service";
+import {ROUTING} from "./app.routes";
 
 @NgModule({
-    imports: [ BrowserModule, ROUTING ],
+    imports: [BrowserModule, ROUTING],
     declarations: [
         AppComponent,
+        AppMenuComponent,
+        UserMenuComponent,
         WelcomeComponent,
-        MenuComponent,
-        AboutComponent,
-		RatingComponent
+        MovieListComponent,
+        RatingComponent,
+        CommaSeparatedPipe
     ],
-    bootstrap: [ AppComponent ]
+    providers: [
+        ApplicationService,
+        MovieService
+    ],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
 

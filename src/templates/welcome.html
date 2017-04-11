@@ -9,12 +9,12 @@
 
 <div class="container">
     <p>
-    <div *ngIf="!userContext.user">
-        <h1>Welcome</h1>
+    <div *ngIf="!getUser()">
+        <h1>Welcome, dear guest</h1>
         please use the menu action to login.
     </div>
-    <div *ngIf="userContext.user">
-        <h1>Hello {{userContext.user.name}}</h1>
+    <div *ngIf="getUser()">
+        <h1>Hello {{getUser().name}}</h1>
         nice to have you back!
     </div>
     <p>

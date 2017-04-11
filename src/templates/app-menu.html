@@ -9,27 +9,24 @@
                 <span class="icon-bar"></span>
             </button>
             <img src="images/computer.png" style="width:48px; margin-right: 10px;">
-            <a class="navbar-brand" href="#" ui-sref="app.welcome">
+            <a class="navbar-brand" href="#" [routerLink]="['/']">
                 <b>Angular</b> Demo Project
             </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active">
-                    <a [routerLink]="['/']"><i class=" fa fa-home" aria-hidden="true"></i> Home</a>
+                <li routerLinkActive="active">
+                    <a [routerLink]="['/welcome']" ><i class=" fa fa-home" aria-hidden="true"></i> Welcome</a>
                 </li>
-                <li>
-                    <a [routerLink]="['/about']">About</a>
+                <li routerLinkActive="active">
+                    <a [routerLink]="['/movies']"><i class="fa fa-film" aria-hidden="true"></i> Movies</a>
                 </li>
-                <li>
-                    <a ui-sref="app.movies"><i class="fa fa-film" aria-hidden="true"></i> Movies</a>
-                </li>
-                <li>
+                <li routerLinkActive="active">
                     <a ui-sref="app.protected"><i class="fa fa-lock" aria-hidden="true"></i> Protected</a>
                 </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right" ui-view="userMenu">
-            </ul>
+            <user-menu></user-menu>
         </div>
+
     </div>
 </nav>

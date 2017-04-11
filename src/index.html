@@ -1,24 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Angular2 Demo</title>
-        <base href="">
+<head>
+    <title>Angular2 Demo</title>
+    <base href="">
 
-        <meta charset="UTF-8">
-        <meta http-equiv="cleartype" content="on">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+    <meta http-equiv="cleartype" content="on">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-		<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 
-    </head>
-    <body>
-    <div>
-        <app-component>
-            <span class="container">Loading...</span>
-        </app-component>
-    </div>
-        <script type="text/javascript" src="libs.js"></script>
-        <script type="text/javascript" src="bundle.js"></script>
-    </body>
+</head>
+<body>
+<div>
+    <app-component>
+        <div class="container">
+
+            <br>
+            <br>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-refresh fa-spin fa-2x fa-fw icon-huge"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="size-xl">Angular2 Demo</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#">
+                    <div class="panel-footer">
+                        <span class="pull-left">Loading, please wait...</span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+
+
+        </div>
+    </app-component>
+</div>
+<script type="text/javascript" src="libs.js"></script>
+<script type="text/javascript" src="bundle.js"></script>
+</body>
 </html>
