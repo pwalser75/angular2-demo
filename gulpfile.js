@@ -36,6 +36,7 @@ const cssMinify = require('gulp-cssnano');
 const runSequence = require('run-sequence');
 const cssConcat = require('gulp-concat-css');
 
+const notify = require('gulp-notify');
 const watchify = require('watchify');
 const browserSync = require('browser-sync').create();
 const url = require('url');
@@ -94,7 +95,10 @@ gulp.task('compile-typescript', [ 'copy-typescript' ], () => {
 
 gulp.task('compile-stylesheets', () => {
 	return gulp.src(fileTypeMatcher(config.filetypes.stylesheet))
-		.pipe(sass().on('error', sass.logError))
+		.pipe(sass(({
+            precision: 10,
+            includePaths: 'node_modules/node-normalize-scss'
+        })).on('error', sass.logError))
 		.pipe(cssPrefixer())
 		.pipe(cssConcat(config.css.target))
 		.pipe(gulp.dest(config.target));
