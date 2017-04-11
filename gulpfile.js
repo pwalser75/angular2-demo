@@ -1,26 +1,5 @@
 'use strict';
 
-// const gulp = require('gulp'); 
-// const clean = require('gulp-clean');
-// const notify = require('gulp-notify');
-// const rename = require('gulp-rename');
-// const jshint = require('gulp-jshint');
-// const uglify = require('gulp-uglify');
-// const concat = require('gulp-concat');
-// const autoprefixer = require('gulp-autoprefixer');
-// const sass = require('gulp-sass');
-// const sourcemaps = require('gulp-sourcemaps'); 
-// const babelify = require('babelify'); 
-// const browserify = require('browserify');
-// const watchify = require('watchify');
-// const merge = require('utils-merge'); 
-// const source = require('vinyl-source-stream'); 
-// const buffer = require('vinyl-buffer');
-// const concatcss = require('gulp-concat-css');
-// const browserSync = require('browser-sync').create();
-// const url = require('url');
-// const proxy = require('proxy-middleware');
-
 const gulp = require('gulp');
 const del = require('del');
 const merge = require('merge-stream');
@@ -48,13 +27,16 @@ const config = {
 	source: './src',
 	target: './build/frontend',
 	temp: './temp',
-	libs:  [
-        'node_modules/core-js/client/shim.js',
-        'node_modules/zone.js/dist/zone.js',
-        'node_modules/reflect-metadata/Reflect.js',
-        'node_modules/jquery/dist/jquery.min.js',
-        'node_modules/bootstrap/dist/js/bootstrap.min.js'
-    ],
+	libs: {
+		bundle: [
+			'node_modules/core-js/client/shim.min.js',
+			'node_modules/zone.js/dist/zone.min.js',
+			'node_modules/reflect-metadata/Reflect.js',
+			'node_modules/jquery/dist/jquery.min.js',
+			'node_modules/bootstrap/dist/js/bootstrap.min.js'
+		],
+		target: 'libs.js'	
+	},
 	javascript: {
 		source: 'index.js',
 		target: 'bundle.js'
@@ -91,8 +73,8 @@ gulp.task('compile-typescript', [ 'copy-typescript' ], () => {
 
     return builder.loadConfig('system.config.js')
         .then(() => builder.buildStatic('app', config.target+'/'+config.javascript.target, {
-            production: false,
-            rollup: false
+            production: true,
+            rollup: true
         }));
 });
 
@@ -113,8 +95,8 @@ gulp.task('copy-resources', () => {
 });
 
 gulp.task('copy-libs', () => {
-    gulp.src(config.libs)
-	.pipe(concat('libs.js'))
+    gulp.src(config.libs.bundle)
+	.pipe(concat(config.libs.target))
     .pipe(gulp.dest(config.target));
 });
 
@@ -129,22 +111,26 @@ gulp.task('clean-temp',() => {
 });
 
 gulp.task('build', callback => {
-	 runSequence('clean', 'compile-typescript', 'compile-stylesheets','copy-resources','copy-libs', 'clean-temp', callback);
+	 runSequence('build-dev', 'minify', callback);
+});
+
+gulp.task('build-dev', callback => {
+	 runSequence('clean', 'compile-typescript', 'compile-stylesheets','copy-resources','copy-libs','clean-temp', callback);
 });
 
 gulp.task('minify', () => {
-    var js = gulp.src('dist/js/bundle.js')
+    var js = gulp.src(config.target+'/'+config.javascript.target)
         .pipe(jsMinify())
-        .pipe(gulp.dest('dist/js/'));
-
-    var css = gulp.src('dist/css/styles.css')
+        .pipe(gulp.dest(config.target));
+		
+    var css = gulp.src(config.target+'/'+config.css.target)
         .pipe(cssMinify())
-        .pipe(gulp.dest('dist/css/'));
+        .pipe(gulp.dest(config.target));
 
     return merge(js, css);
 });
 
-gulp.task('watch', ['build'], () => {
+gulp.task('watch', ['build-dev'], () => {
     var watchers = [
 		gulp.watch(fileTypeMatcher(config.filetypes.javascript), [ 'compile-typescript' ]),
 		gulp.watch(fileTypeMatcher(config.filetypes.stylesheet), ['compile-stylesheets' ]),
