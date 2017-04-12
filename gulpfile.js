@@ -35,7 +35,7 @@ const config = {
 			'node_modules/jquery/dist/jquery.min.js',
 			'node_modules/bootstrap/dist/js/bootstrap.min.js'
 		],
-		target: 'libs.js'	
+		target: 'libs.js'
 	},
 	javascript: {
 		source: 'index.js',
@@ -49,9 +49,9 @@ const config = {
 		route: '/api'
 	},
 	filetypes: {
-		javascript: ['ts','js','json'],
+		javascript: ['ts','js'],
 		stylesheet: ['css', 'scss'],
-		resources:  ['html','jpg','png','svg','woff','woff2']
+		resources:  ['html','json','jpg','png','svg','woff','woff2']
 	}
 };
 
@@ -122,7 +122,7 @@ gulp.task('minify', () => {
     var js = gulp.src(config.target+'/'+config.javascript.target)
         .pipe(jsMinify())
         .pipe(gulp.dest(config.target));
-		
+
     var css = gulp.src(config.target+'/'+config.css.target)
         .pipe(cssMinify())
         .pipe(gulp.dest(config.target));

@@ -6,22 +6,9 @@ import {ApplicationService, User} from "../services/application.service";
     templateUrl: 'templates/user-menu.html'
 })
 export class UserMenuComponent {
-    applicationService: ApplicationService;
 
-    constructor(private _applicationService: ApplicationService) {
-        this.applicationService = _applicationService
+    constructor(private applicationService: ApplicationService) {
     }
 
-    getUser(): User {
-        return this.applicationService.getUser();
-    }
-
-    login() {
-        this.applicationService.login();
-    }
-
-    logout() {
-        this.applicationService.logout();
-    }
 }
 

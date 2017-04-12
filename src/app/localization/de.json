@@ -1,0 +1,13 @@
+{
+  "app.title":"Angular2 Demo",
+  "app.description":"Hallo, Angular",
+  "welcome": "Willkommen",
+  "movies": "Filme",
+  "protected": "Geschützt",
+  "register": "Registrieren",
+  "login": "Anmelden",
+  "logout": "Abmelden",
+  "account.settings": "Konto-Einstellungen",
+  "login.title" : "Anmelden",
+  "login.description" : "Bitte melden Sie sich mit ihrem Benutzernamen und Passwort an"
+}

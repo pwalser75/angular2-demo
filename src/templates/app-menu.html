@@ -16,15 +16,19 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li routerLinkActive="active">
-                    <a [routerLink]="['/welcome']" ><i class=" fa fa-home" aria-hidden="true"></i> Welcome</a>
+                    <a [routerLink]="['/welcome']"><i class=" fa fa-home" aria-hidden="true"></i>
+                        {{'welcome'|translate}}</a>
                 </li>
                 <li routerLinkActive="active">
-                    <a [routerLink]="['/movies']"><i class="fa fa-film" aria-hidden="true"></i> Movies</a>
+                    <a [routerLink]="['/movies']"><i class="fa fa-film" aria-hidden="true"></i>
+                        {{'movies'|translate}}</a>
                 </li>
                 <li routerLinkActive="active">
-                    <a ui-sref="app.protected"><i class="fa fa-lock" aria-hidden="true"></i> Protected</a>
+                    <a ui-sref="app.protected"><i class="fa fa-lock" aria-hidden="true"></i>
+                        {{'protected'|translate}}</a>
                 </li>
             </ul>
+            <lang-menu></lang-menu>
             <user-menu></user-menu>
         </div>
 

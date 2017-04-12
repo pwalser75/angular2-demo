@@ -1,0 +1,13 @@
+{
+  "app.title": "Angular2 Demo",
+  "app.description": "Hello from Angular",
+  "welcome": "Welcome",
+  "movies": "Movies",
+  "protected": "Protected",
+  "register": "Register",
+  "login": "Login",
+  "logout": "Logout",
+  "account.settings": "Account settings",
+  "login.title": "Login",
+  "login.description": "Please login with your user name and password"
+}

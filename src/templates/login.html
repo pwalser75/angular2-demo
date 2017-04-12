@@ -1,8 +1,8 @@
 <div id="title" class="wallpaper">
     <div class="container">
         <div class="jumbotron">
-            <h1>Login</h1>
-            <h3>Please login with your user name and password</h3>
+            <h1>{{'login.title'|translate}}</h1>
+            <h3>{{'login.description'|translate}}</h3>
         </div>
     </div>
 </div>
@@ -12,7 +12,7 @@
 
         <span>
         <div class="input-group validation"
-             [ng-class]="{mandatory: form.user.$error.required, error: form.user.$invalid && form.user.$dirty}">
+             [class]="{mandatory: form.user.$error.required, error: form.user.$invalid && form.user.$dirty}">
             <label>User name</label>
             <input name="user" class="widget" type="text" ng-model="user"
                    placeholder="Please enter your user name"
@@ -27,7 +27,7 @@
         </div>
 </span>
         <div class="input-group validation"
-             [ng-class]="{mandatory: form.password.$error.required, error: form.password.$invalid && form.password.$dirty}">
+             [class]="{mandatory: form.password.$error.required, error: form.password.$invalid && form.password.$dirty}">
             <label>Password</label>
             <input name="password" class="widget" type="password" ng-model="password"
                    placeholder="Please enter your password"
