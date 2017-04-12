@@ -22,6 +22,6 @@ export class RatingComponent {
     }
 
     createRangeArray(min: number, max: number) {
-        return new Array(max-min+1).fill().map((x: number,i: number)=>i+min);
+        return new Array<number>(max-min+1).map((x: number,i: number)=>i+min);
     }
 }

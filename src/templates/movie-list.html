@@ -3,7 +3,7 @@
 
     <div class="list-item" *ngFor="let movie of movies">
 		<span class="list-item-icon">
-			<a href="#" ui-sref="app.movieDetail({id: movie.id})">
+			<a href="javascript:void(0)" [routerLink]="['/movie', movie.id]">
 				<img [src]="movie.image" style="height:120px; ">
 			</a>
 		</span>

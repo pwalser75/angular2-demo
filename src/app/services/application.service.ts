@@ -9,9 +9,9 @@ export class ApplicationService {
 
     }
 
-    login() {
+    login(name: string, password: string) {
         this.user = {
-            name: "Test User"
+            name: name
         }
     }
 
@@ -19,7 +19,7 @@ export class ApplicationService {
         this.user = null;
     }
 
-    getUser():User{
+    getUser(): User {
         return this.user;
     }
 }

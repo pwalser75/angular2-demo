@@ -12,12 +12,12 @@
         </ul>
     </li>
     <li *ngIf="!applicationService.user">
-        <a href="javascript:void(0)" (click)="applicationService.login()">
+        <a href="javascript:void(0)" (click)="applicationService.login('Test User','secret007')">
             <i class="fa fa-user" aria-hidden="true"></i> Sign Up
         </a>
     </li>
     <li *ngIf="!applicationService.user">
-        <a ui-sref="app.login">
+        <a href="javascript:void(0)" [routerLink]="['/login']">
             <i class="fa fa-sign-in" aria-hidden="true"></i> Login
         </a>
     </li>
