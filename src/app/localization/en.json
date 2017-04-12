@@ -1,13 +1,43 @@
 {
-  "app.title": "Angular2 Demo",
-  "app.description": "Hello from Angular",
-  "welcome": "Welcome",
-  "movies": "Movies",
-  "protected": "Protected",
-  "register": "Register",
-  "login": "Login",
-  "logout": "Logout",
-  "account.settings": "Account settings",
-  "login.title": "Login",
-  "login.description": "Please login with your user name and password"
+  "general": {
+    "ok": "OK",
+    "cancel": "Cancel",
+    "yes": "Yes",
+    "no": "No",
+    "create": "Create",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "print": "Print",
+    "share": "Share",
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "app": {
+    "title": "Angular2 Demo",
+    "description": "Hello from Angular"
+  },
+  "menu": {
+    "welcome": "-> welcome.title",
+    "movies": "-> movies.title",
+    "protected": "Protected",
+    "register": "Register",
+    "account-settings": "Account settings",
+    "login": "-> general.login",
+    "logout": "-> general.logout"
+  },
+  "login": {
+    "title": "-> general.login",
+    "description": "Please login with your user name and password"
+  },
+  "welcome": {
+    "title": "Welcome",
+    "greeting-user": "Welcome, ",
+    "greeting-guest": "Welcome, dear guest",
+    "welcome-back": "nice to have you back!",
+    "login-hint": "please use the menu action to login."
+  },
+  "movies": {
+    "title": "Movies"
+  }
 }

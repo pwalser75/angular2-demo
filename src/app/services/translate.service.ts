@@ -6,6 +6,7 @@ export class TranslateService {
 
     currentLanguage: string;
     supportedLanguages: any;
+    loadedLanguages: any[];
     translations: any[];
 
     constructor(private http: Http) {
@@ -66,14 +67,23 @@ export class TranslateService {
 
     translate(key: string): string {
 
+        let languageMap = this.translations[this.currentLanguage];
+        if (!languageMap) {
+            // not yet loaded
+            return '...';
+        }
         if (key) {
-            let languageMap = this.translations[this.currentLanguage];
-            if (languageMap) {
-                let value = languageMap[key.trim()];
-                if (value) {
-                    return value;
-                }
+            let value: any = languageMap;
+            for (let part of key.split(".")) {
+                value = value ? value[part] : null;
             }
+            if (value) {
+                var linkRegex = /->\s*([^\s]+)\s*/g;
+                var match = linkRegex.exec(value);
+                return (match) ? this.translate(match[1]) : value;
+            }
+
+            console.error("No translation found for '" + key + "' in language '" + this.currentLanguage + "'");
             return "?" + key + "[" + this.currentLanguage + "]?";
         }
     }

@@ -6,19 +6,19 @@
             <span class="caret"></span>
         </a>
         <ul class="dropdown-menu">
-            <li><a href="#">{{'account.settings'|translate}}</a></li>
+            <li><a href="#">{{'menu.account-settings'|translate}}</a></li>
             <li role="separator" class="divider"></li>
-            <li><a (click)="applicationService.logout()">{{'logout'|translate}}</a></li>
+            <li><a (click)="applicationService.logout()">{{'menu.logout'|translate}}</a></li>
         </ul>
     </li>
     <li *ngIf="!applicationService.user">
         <a href="javascript:void(0)" (click)="applicationService.login('Test User','secret007')">
-            <i class="fa fa-user" aria-hidden="true"></i> {{'register'|translate}}
+            <i class="fa fa-user" aria-hidden="true"></i> {{'menu.register'|translate}}
         </a>
     </li>
     <li *ngIf="!applicationService.user">
         <a href="javascript:void(0)" [routerLink]="['/login']">
-            <i class="fa fa-sign-in" aria-hidden="true"></i> {{'login'|translate}}
+            <i class="fa fa-sign-in" aria-hidden="true"></i> {{'menu.login'|translate}}
         </a>
     </li>
 </ul>

@@ -1,13 +1,43 @@
 {
-  "app.title":"Angular2 Demo",
-  "app.description":"Hallo, Angular",
-  "welcome": "Willkommen",
-  "movies": "Filme",
-  "protected": "Geschützt",
-  "register": "Registrieren",
-  "login": "Anmelden",
-  "logout": "Abmelden",
-  "account.settings": "Konto-Einstellungen",
-  "login.title" : "Anmelden",
-  "login.description" : "Bitte melden Sie sich mit ihrem Benutzernamen und Passwort an"
+  "general": {
+    "ok": "OK",
+    "cancel": "Abbrechen",
+    "yes": "ja",
+    "no": "Nein",
+    "create": "Erstellen",
+    "save": "Speichern",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "print": "Drucken",
+    "share": "Teilen",
+    "login": "Anmelden",
+    "logout": "Abmelden"
+  },
+  "app": {
+    "title": "Angular2 Demo",
+    "description": "Hallo Angular"
+  },
+  "menu": {
+    "welcome": "-> welcome.title",
+    "movies": "->movies.title  ",
+    "protected": "Geschützt",
+    "register": "Registrieren",
+    "account-settings": "Konto-Einstellungen",
+    "login": "-> general.login",
+    "logout": "-> general.logout"
+  },
+  "login": {
+    "title": "-> general.login",
+    "description": "Bitte melden Sie sich mit ihrem Benutzernamen und Passwort an"
+  },
+  "welcome": {
+    "title": "Willkommen",
+    "greeting-user": "Hallo",
+    "greeting-guest": "Willkommen, lieber Gast",
+    "welcome-back": "schön, dich wiederzusehen!",
+    "login-hint": "Benutze die Menufunktion, um dich anzumelden."
+  },
+  "movies": {
+    "title": "Filme"
+  }
 }
