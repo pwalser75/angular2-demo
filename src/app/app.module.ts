@@ -1,5 +1,6 @@
 import {NgModule} from "@angular/core";
 import {HttpModule} from "@angular/http";
+import {ReactiveFormsModule} from "@angular/forms";
 import {BrowserModule} from "@angular/platform-browser";
 import {AppComponent} from "./app.component";
 import {AppMenuComponent} from "./menu/app-menu.component";
@@ -18,7 +19,7 @@ import {TranslatePipe} from "./pipes/translate.pipe";
 import {ROUTING} from "./app.routes";
 
 @NgModule({
-    imports: [BrowserModule, HttpModule, ROUTING],
+    imports: [BrowserModule, HttpModule, ReactiveFormsModule, ROUTING],
     declarations: [
         AppComponent,
         AppMenuComponent,

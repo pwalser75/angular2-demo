@@ -8,36 +8,23 @@
 </div>
 
 <div class="container">
-    <form name="form" class="form-horizontal" novalidate (ngSubmit)="form.$valid && login()">
-
-        <span>
-        <div class="input-group validation"
-             [class]="{mandatory: form.user.$error.required, error: form.user.$invalid && form.user.$dirty}">
-            <label>User name</label>
-            <input name="user" class="widget" type="text" ng-model="user"
-                   placeholder="Please enter your user name"
-                   ng-minlength="3" ng-maxlength="20" required/>
-
-            <span ng-messages="form.user.$error" *ngIf="form.user.$dirty">
-                        <span ng-message="required">Name is required</span>
-                        <span ng-message="minlength">Name is too short.</span>
-                        <span ng-message="maxlength">Name is too long.</span>
-                    </span>
-
+    <form [formGroup]="form" class="form-horizontal" novalidate (ngSubmit)="login()">
+        <!--
+        <p>Form value: {{ form.value | json }}</p>
+        <p>Form status: {{ form.status | json }}</p>
+        -->
+        <div class="input-group validation">
+            <p>
+                <label>Name:</label>
+                <input class="widget" type="text" formControlName="user"
+                       placeholder="Please enter your user name">
+            </p>
+            <p>
+                <label>Password:</label>
+                <input class="widget" type="password" formControlName="password"
+                       placeholder="Please enter your password">
+            </p>
+            <button [disabled]="!form.valid">Submit</button>
         </div>
-</span>
-        <div class="input-group validation"
-             [class]="{mandatory: form.password.$error.required, error: form.password.$invalid && form.password.$dirty}">
-            <label>Password</label>
-            <input name="password" class="widget" type="password" ng-model="password"
-                   placeholder="Please enter your password"
-                   ng-minlength="6" ng-maxlength="20" required/>
-            <span ng-messages="form.password.$error" ng-show="form.password.$dirty">
-                <span ng-message="required">Password is required</span>
-                <span ng-message="minlength">Password is too short.</span>
-                <span ng-message="maxlength">Password is too long.</span>
-            </span>
-        </div>
-        <button type="submit" class="btn btn-primary">Login</button>
     </form>
 </div>
