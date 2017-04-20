@@ -1,5 +1,6 @@
 {
   "general": {
+    "submit": "Submit",
     "ok": "OK",
     "cancel": "Cancel",
     "yes": "Yes",
@@ -12,6 +13,11 @@
     "share": "Share",
     "login": "Login",
     "logout": "Logout"
+  },
+  "error": {
+    "required": "Value is required",
+    "minlength": "The value must be at least ${requiredLength} characters",
+    "maxlength": "The value must be no more than ${requiredLength} characters"
   },
   "app": {
     "title": "Angular2 Demo",
@@ -28,7 +34,13 @@
   },
   "login": {
     "title": "-> general.login",
-    "description": "Please login with your user name and password"
+    "description": "Please login with your user name and password",
+    "user": "User name",
+    "user-hint": "Please enter your user name",
+    "password": "Password",
+    "password-hint": "Please enter your password"
+
+
   },
   "welcome": {
     "title": "Welcome",

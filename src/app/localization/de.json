@@ -1,5 +1,6 @@
 {
   "general": {
+    "submit": "Absenden",
     "ok": "OK",
     "cancel": "Abbrechen",
     "yes": "ja",
@@ -12,6 +13,11 @@
     "share": "Teilen",
     "login": "Anmelden",
     "logout": "Abmelden"
+  },
+  "error": {
+    "required": "Wert muss angegeben werden",
+    "minlength": "Wert muss aus mindestens ${requiredLength} Zeichen bestehen",
+    "maxlength": "Wert darf aus höchstens ${requiredLength} Zeichen bestehen"
   },
   "app": {
     "title": "Angular2 Demo",
@@ -28,7 +34,11 @@
   },
   "login": {
     "title": "-> general.login",
-    "description": "Bitte melden Sie sich mit ihrem Benutzernamen und Passwort an"
+    "description": "Bitte melden Sie sich mit ihrem Benutzernamen und Passwort an",
+    "user": "Benutzername",
+    "user-hint": "Bitte geben Sie ihren Benutzernamen an",
+    "password": "Passwort",
+    "password-hint": "Bitte geben Sie ihr Passwort ein"
   },
   "welcome": {
     "title": "Willkommen",

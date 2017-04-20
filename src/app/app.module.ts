@@ -17,6 +17,7 @@ import {MovieService} from "./services/movie.service";
 import {CommaSeparatedPipe} from "./pipes/comma-separated.pipe";
 import {TranslatePipe} from "./pipes/translate.pipe";
 import {ROUTING} from "./app.routes";
+import {InputErrorsComponent} from "./widgets/input.errors.component";
 
 @NgModule({
     imports: [BrowserModule, HttpModule, ReactiveFormsModule, ROUTING],
@@ -29,6 +30,7 @@ import {ROUTING} from "./app.routes";
         LoginComponent,
         MovieListComponent,
         MovieDetailComponent,
+        InputErrorsComponent,
         RatingComponent,
         CommaSeparatedPipe,
         TranslatePipe
