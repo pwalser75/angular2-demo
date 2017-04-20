@@ -16,8 +16,9 @@
   },
   "error": {
     "required": "Value is required",
-    "minlength": "The value must be at least ${requiredLength} characters",
-    "maxlength": "The value must be no more than ${requiredLength} characters"
+    "minlength": "Value must be at least ${requiredLength} characters (currently: ${actualLength})",
+    "maxlength": "Value must be no more than ${requiredLength} characters (currently: ${actualLength})",
+    "pattern": "Value does not match the expected format (${requiredPattern})"
   },
   "app": {
     "title": "Angular2 Demo",

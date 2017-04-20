@@ -17,7 +17,7 @@ export class LoginComponent {
         this.form = fb.group(
             {
                 "user": ['', Validators.compose(
-                    [Validators.required, Validators.minLength(3), Validators.maxLength(20)]
+                    [Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern("[a-zA-Z][\\-_a-zA-Z0-9]+")]
                 )],
                 "password": ['', Validators.compose(
                     [Validators.required, Validators.minLength(6), Validators.maxLength(20)]

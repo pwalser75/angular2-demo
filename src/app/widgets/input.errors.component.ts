@@ -15,7 +15,6 @@ export class InputErrorsComponent implements OnChanges {
     errorMessage:any;
 
     constructor(private translateService:TranslateService) {
-
     }
 
     ngOnChanges(changes:any):void {
@@ -28,7 +27,7 @@ export class InputErrorsComponent implements OnChanges {
         } else {
             this.errorMessage = null;
         }
-        //console.log("CHANGES: " + JSON.stringify(changes.source.currentValue));
+        // console.log("CHANGES: " + JSON.stringify(changes.source.currentValue));
     }
 
     getFirstErrorMessageKey(errors:any):string {

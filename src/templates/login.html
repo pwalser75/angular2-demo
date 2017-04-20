@@ -9,11 +9,11 @@
 
 <div class="container">
     <form [formGroup]="form" class="form-horizontal" novalidate (ngSubmit)="login()">
-
+        <!--
         <p>Form: {{ form.value | json }}</p>
         <p>Form status: {{ form.status | json }}</p>
-        <p>Form status: {{ form.controls.user.errors | json }}</p>
-
+        <p>User control errors: {{ form.controls.user.errors | json }}</p>
+        -->
         <div class="input-group validation">
             <p>
                 <label>{{'login.user'|translate}}:</label>

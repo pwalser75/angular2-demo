@@ -16,8 +16,9 @@
   },
   "error": {
     "required": "Wert muss angegeben werden",
-    "minlength": "Wert muss aus mindestens ${requiredLength} Zeichen bestehen",
-    "maxlength": "Wert darf aus höchstens ${requiredLength} Zeichen bestehen"
+    "minlength": "Wert muss aus mindestens ${requiredLength} Zeichen bestehen (aktuell: ${actualLength})",
+    "maxlength": "Wert darf aus höchstens ${requiredLength} Zeichen bestehen (aktuell: ${actualLength})",
+    "pattern": "Wert entspricht nicht dem erwarteten Format (${requiredPattern})"
   },
   "app": {
     "title": "Angular2 Demo",
