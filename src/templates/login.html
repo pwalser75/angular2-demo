@@ -13,21 +13,33 @@
         <p>Form: {{ form.value | json }}</p>
         <p>Form status: {{ form.status | json }}</p>
         <p>User control errors: {{ form.controls.user.errors | json }}</p>
-        -->
-        <div class="input-group validation">
-            <p>
-                <label>{{'login.user'|translate}}:</label>
-                <input class="widget" type="text" formControlName="user"
-                       placeholder="{{'login.user-hint'|translate}}">
-                <inputErrors [source]="form.controls.user.errors"></inputErrors>
-            </p>
-            <p>
-                <label>{{'login.password'|translate}}:</label>
-                <input class="widget" type="password" formControlName="password"
-                       placeholder="{{'login.password-hint'|translate}}">
-                <inputErrors [source]="form.controls.password.errors"></inputErrors>
-            </p>
-            <button class="btn btn-primary" [disabled]="!form.valid">{{'general.submit'|translate}}</button>
-        </div>
+
+        <input-component [foo]="user" [bla]=login.user"></input-component>
+
+          <i class="fa fa-id-card-o" aria-hidden="true"></i>
+          <i class="fa fa-key" aria-hidden="true"></i>
+
+          -->
+        <input-component label="login.user" [errors]="form.controls.user.errors" [control]="form.controls.user">
+            <input class="widget" type="text" formControlName="user"
+                   placeholder="{{'login.user-hint'|translate}}">
+        </input-component>
+        <input-component label="login.password" [errors]="form.controls.password.errors"
+                         [control]="form.controls.password">
+            <input class="widget" type="password" formControlName="password"
+                   placeholder="{{'login.password-hint'|translate}}">
+        </input-component>
+        <input-component label="login.remember" [errors]="form.controls.remember.errors"
+                         [control]="form.controls.remember">
+            <div class="checkbox widget">
+                <label>
+                    <input type="checkbox" formControlName="remember">
+                    <span *ngIf="form.controls.remember.value">{{'general.yes-nice'|translate}}</span>
+                    <span *ngIf="!form.controls.remember.value">{{'general.no-nice'|translate}}</span>
+                </label>
+            </div>
+        </input-component>
+        <button class="btn btn-primary" [disabled]="!form.valid">{{'general.submit'|translate}}</button>
+
     </form>
 </div>

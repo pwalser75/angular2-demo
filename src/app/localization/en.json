@@ -5,6 +5,8 @@
     "cancel": "Cancel",
     "yes": "Yes",
     "no": "No",
+    "yes-nice": "Yes, please",
+    "no-nice": "No, thanks",
     "create": "Create",
     "save": "Save",
     "edit": "Edit",
@@ -39,9 +41,8 @@
     "user": "User name",
     "user-hint": "Please enter your user name",
     "password": "Password",
-    "password-hint": "Please enter your password"
-
-
+    "password-hint": "Please enter your password",
+    "remember": "Stay logged in"
   },
   "welcome": {
     "title": "Welcome",
