@@ -5,11 +5,11 @@ Demo project/showcase/template for Angular2.
 - **Angular2** (4.x) with **Typescript**
 - **Build**: **Gulp/NPM** build, with supplemental **Gradle** and **Maven** build files (build a WAR, standalone, don't require a global Node.js installation)
 - **Bootstrap UI** with **FontAwesome** icons
-- **Single page application** with menu and routable content
+- **Single page application** with menu and **routing**
 - **Reactive forms** with **validation**
 - **Title service** support: each route has its own window title
-- **Components**: welcome, login, movie-list, movie-detail, menus (app-menu, user-menu, lang-menu)
-- **Services**: application-service, translate-service, movie-service, 
+- **Components**: welcome, login, movie-list, movie-detail, changes (Github), menus (app-menu, user-menu, lang-menu)
+- **Services**: application-service, translate-service, movie-service, github-service
 - **Pipes**: comma-separated, translate
 - **Widgets** (components): input-component, input-errors, rating
 - **Localization** in EN and DE with JSON files, additional languages can be added easily
