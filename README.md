@@ -1,6 +1,8 @@
 # Angular2 demo project
 Demo project/showcase/template for Angular2.
 
+![Screenshot](screenshot.png)
+
 ## Features
 - **Angular2** (4.x) with **Typescript**
 - **Build**: **Gulp/NPM** build, with supplemental **Gradle** and **Maven** build files (build a WAR, standalone, don't require a global Node.js installation)
