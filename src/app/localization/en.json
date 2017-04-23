@@ -1,5 +1,6 @@
 {
   "general": {
+    "loading": "Loading",
     "submit": "Submit",
     "ok": "OK",
     "cancel": "Cancel",
@@ -29,6 +30,7 @@
   "menu": {
     "welcome": "-> welcome.title",
     "movies": "-> movies.title",
+    "changes": "-> changes.title",
     "protected": "Protected",
     "register": "Register",
     "account-settings": "Account settings",
@@ -53,5 +55,9 @@
   },
   "movies": {
     "title": "Movies"
+  },
+  "changes": {
+    "title": "Changes",
+    "subtitle": "Changes on this project (Github)"
   }
 }

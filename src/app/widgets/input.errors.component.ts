@@ -22,8 +22,8 @@ export class InputErrorsComponent implements OnChanges {
         var errors:any = changes.source.currentValue;
         var key:string = this.getFirstErrorMessageKey(errors);
         if (key) {
-            var translated= this.translateService.translate("error."+key);
-            this.errorMessage = this.translateService.replacePlaceholders(translated,errors[key]);
+            var translated = this.translateService.translate("error." + key);
+            this.errorMessage = this.translateService.replacePlaceholders(translated, errors[key]);
         } else {
             this.errorMessage = null;
         }

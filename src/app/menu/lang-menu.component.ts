@@ -1,5 +1,4 @@
 import {Component} from "@angular/core";
-import {ApplicationService, User} from "../services/application.service";
 import {TranslateService} from "../services/translate.service";
 
 @Component({
@@ -8,7 +7,7 @@ import {TranslateService} from "../services/translate.service";
 })
 export class LanguageMenuComponent {
 
-    constructor(private translateService: TranslateService) {
+    constructor(private translateService:TranslateService) {
     }
 
 }

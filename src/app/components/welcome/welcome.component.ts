@@ -7,17 +7,17 @@ import {ApplicationService, User} from "../../services/application.service";
 })
 export class WelcomeComponent {
 
-    title: string;
-    message: string;
-    applicationService: ApplicationService;
+    title:string;
+    message:string;
+    applicationService:ApplicationService;
 
-    constructor(private _applicationService: ApplicationService) {
+    constructor(private _applicationService:ApplicationService) {
         this.title = "Angular2 Demo";
         this.message = "Hello from Angular";
         this.applicationService = _applicationService
     }
 
-    getUser(): User {
+    getUser():User {
         return this.applicationService.getUser();
     }
 }

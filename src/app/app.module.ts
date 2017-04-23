@@ -19,6 +19,9 @@ import {TranslatePipe} from "./pipes/translate.pipe";
 import {ROUTING} from "./app.routes";
 import {InputErrorsComponent} from "./widgets/input.errors.component";
 import {InputComponent} from "./widgets/input-component.component";
+import {GithubService} from "./services/github.service";
+import {ChangesComponent} from "./components/changes/changes-component";
+import {GithubCommitsComponent} from "./components/changes/github-commits.component";
 
 @NgModule({
     imports: [BrowserModule, HttpModule, ReactiveFormsModule, ROUTING],
@@ -31,6 +34,8 @@ import {InputComponent} from "./widgets/input-component.component";
         LoginComponent,
         MovieListComponent,
         MovieDetailComponent,
+        ChangesComponent,
+        GithubCommitsComponent,
         InputComponent,
         InputErrorsComponent,
         RatingComponent,
@@ -41,6 +46,7 @@ import {InputComponent} from "./widgets/input-component.component";
         ApplicationService,
         TranslateService,
         MovieService,
+        GithubService
     ],
     bootstrap: [AppComponent]
 })

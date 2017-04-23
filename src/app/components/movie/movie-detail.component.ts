@@ -1,4 +1,5 @@
 import {Component, OnInit, OnDestroy} from "@angular/core";
+import {Title} from "@angular/platform-browser";
 import {MovieService, Movie} from "../../services/movie.service";
 import {ActivatedRoute} from "@angular/router";
 
@@ -8,10 +9,10 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class MovieDetailComponent implements OnInit, OnDestroy {
 
-    movie: Movie;
-    private sub: any;
+    movie:Movie;
+    private sub:any;
 
-    constructor(private movieService: MovieService, private route: ActivatedRoute) {
+    constructor(private movieService:MovieService, private route:ActivatedRoute, private titleService:Title) {
 
     }
 
@@ -19,6 +20,7 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
         this.sub = this.route.params.subscribe(params => {
             var id = +params['id']; // (+) converts string 'id' to a number
             this.movie = this.movieService.getMovie(id);
+            this.titleService.setTitle(this.movie ? this.movie.title + "(" + this.movie.year + ")" : 'no movie');
         });
     }
 

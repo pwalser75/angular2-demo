@@ -1,5 +1,4 @@
-import {Component, Input, OnChanges, AfterViewInit, ViewChild} from "@angular/core";
-import {FormControl} from "@angular/forms";
+import {Component, Input, OnChanges, AfterViewInit} from "@angular/core";
 import {TranslateService} from "../services/translate.service";
 
 @Component({

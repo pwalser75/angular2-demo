@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import {Component, Input} from "@angular/core";
 
 @Component({
     selector: 'rating',
@@ -9,11 +9,11 @@ import { Component, Input } from '@angular/core';
 	</span>
 	`
 })
-export class RatingComponent { 
-	@Input() value: number;
-	@Input() max: number;
-	
-	getStarsMax() {
+export class RatingComponent {
+    @Input() value:number;
+    @Input() max:number;
+
+    getStarsMax() {
         return this.max;
     }
 
@@ -21,7 +21,7 @@ export class RatingComponent {
         return Math.round(this.value);
     }
 
-    createRangeArray(min: number, max: number) {
-        return new Array<number>(max-min+1).map((x: number,i: number)=>i+min);
+    createRangeArray(min:number, max:number) {
+        return new Array<number>(max - min + 1).map((x:number, i:number)=>i + min);
     }
 }
