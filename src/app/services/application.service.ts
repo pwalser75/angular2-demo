@@ -9,13 +9,13 @@ export class ApplicationService {
 
     }
 
-    login(name:string, password:string) {
+    login(name:string, password:string):void {
         this.user = {
             name: name
         }
     }
 
-    logout() {
+    logout():void {
         this.user = null;
     }
 

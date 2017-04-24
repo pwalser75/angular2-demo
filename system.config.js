@@ -1,6 +1,6 @@
 (function(global) {
     var map = {
-        'app':      'temp/app',
+        'app':      'build/temp/app',
         'rxjs':     'node_modules/rxjs',
         '@angular': 'node_modules/@angular'
     };

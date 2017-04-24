@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
                 private titleService:Title) {
     }
 
-    ngOnInit() {
+    ngOnInit():void {
         this.router.events
             .filter(event => event instanceof NavigationEnd)
             .map(() => this.activatedRoute)

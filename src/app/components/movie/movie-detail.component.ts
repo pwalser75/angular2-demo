@@ -9,14 +9,14 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class MovieDetailComponent implements OnInit, OnDestroy {
 
-    movie:Movie;
-    private sub:any;
+    movie: Movie;
+    private sub: any;
 
-    constructor(private movieService:MovieService, private route:ActivatedRoute, private titleService:Title) {
+    constructor(private movieService: MovieService, private route: ActivatedRoute, private titleService: Title) {
 
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.sub = this.route.params.subscribe(params => {
             var id = +params['id']; // (+) converts string 'id' to a number
             this.movie = this.movieService.getMovie(id);
@@ -24,7 +24,7 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.sub.unsubscribe();
     }
 }

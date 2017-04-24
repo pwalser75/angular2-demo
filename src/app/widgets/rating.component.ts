@@ -10,18 +10,18 @@ import {Component, Input} from "@angular/core";
 	`
 })
 export class RatingComponent {
-    @Input() value:number;
-    @Input() max:number;
+    @Input() value: number;
+    @Input() max: number;
 
-    getStarsMax() {
+    getStarsMax(): number {
         return this.max;
     }
 
-    getStarsFilled() {
+    getStarsFilled(): number {
         return Math.round(this.value);
     }
 
-    createRangeArray(min:number, max:number) {
-        return new Array<number>(max - min + 1).map((x:number, i:number)=>i + min);
+    createRangeArray(min: number, max: number): Array<number> {
+        return new Array<number>(max - min + 1).map((x: number, i: number) => i + min);
     }
 }

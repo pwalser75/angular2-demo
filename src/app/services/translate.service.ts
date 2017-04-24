@@ -22,7 +22,7 @@ export class TranslateService {
         }
     }
 
-    loadLanguageResources(lang:string) {
+    loadLanguageResources(lang:string):void {
         let resource:string = "app/localization/" + lang + ".json";
         console.log("Loading: " + resource);
 
@@ -35,7 +35,7 @@ export class TranslateService {
     }
 
 
-    setLanguage(lang:string) {
+    setLanguage(lang:string):void {
         if (this.isSupportedLanguage(lang)) {
             this.currentLanguage = lang;
         }

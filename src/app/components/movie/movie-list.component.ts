@@ -7,9 +7,9 @@ import {MovieService, Movie} from "../../services/movie.service";
 })
 export class MovieListComponent {
 
-    movies:Movie[];
+    movies: Movie[];
 
-    constructor(private movieService:MovieService) {
+    constructor(private movieService: MovieService) {
         this.movies = movieService.getMovies();
     }
 }

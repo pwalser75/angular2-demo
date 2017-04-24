@@ -26,7 +26,7 @@ const proxy = require('proxy-middleware');
 const config = {
 	source: './src',
 	target: './build/frontend',
-	temp: './temp',
+	temp: './build/temp',
 	libs: {
 		bundle: [
 			'node_modules/core-js/client/shim.min.js',
@@ -102,20 +102,19 @@ gulp.task('copy-libs', () => {
 
 // build targets
 
-gulp.task('clean', ['clean-temp'], () => {
-	return del(config.target);
+gulp.task('clean', () => {
+	del(config.target);
+	del(config.temp);
 });
 
-gulp.task('clean-temp',() => {
-	return del(config.temp);
+gulp.task('build', (callback) => {
+	 return runSequence('build-dev', 'minify', callback);
 });
 
-gulp.task('build', callback => {
-	 runSequence('build-dev', 'minify', callback);
-});
+gulp.task('compile', ['compile-typescript', 'compile-stylesheets','copy-resources','copy-libs']);
 
-gulp.task('build-dev', callback => {
-	 runSequence('clean', 'compile-typescript', 'compile-stylesheets','copy-resources','copy-libs','clean-temp', callback);
+gulp.task('build-dev', (callback) => {
+	 return runSequence('clean', 'compile', callback);
 });
 
 gulp.task('minify', () => {
