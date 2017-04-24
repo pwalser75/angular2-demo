@@ -111,10 +111,8 @@ gulp.task('build', (callback) => {
 	 return runSequence('build-dev', 'minify', callback);
 });
 
-gulp.task('compile', ['compile-typescript', 'compile-stylesheets','copy-resources','copy-libs']);
-
 gulp.task('build-dev', (callback) => {
-	 return runSequence('clean', 'compile', callback);
+	 return runSequence('clean', 'compile-typescript', 'compile-stylesheets','copy-resources','copy-libs', callback);
 });
 
 gulp.task('minify', () => {
