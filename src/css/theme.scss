@@ -32,6 +32,10 @@ img.liquid {
   }
 }
 
+.thumbnail {
+  box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.4);
+}
+
 [ng-click],
 [data-ng-click],
 [x-ng-click] {

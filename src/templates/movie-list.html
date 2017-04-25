@@ -1,34 +1,21 @@
 <div class="container">
     <h1 class="col-12">{{'movies.title'|translate}}</h1>
-    <!--
-        <div class="list-item" *ngFor="let movie of movieService.getMovies()">
-            <span class="list-item-icon">
-                <a href="javascript:void(0)" [routerLink]="['/movie', movie.id]">
-                    <img [src]="movie.image" style="height:120px; ">
-                </a>
-            </span>
-            <span class="list-item-content">
-                <h1>{{movie.title}}</h1>
-                <b>{{movie.year}}</b> | {{movie.genres | commaSeparated}}<br>
-                <rating value="{{movie.rating}}" max="10"></rating>&nbsp;<b>{{movie.rating}}</b>/10
-            </span>
-        </div>
-        -->
 
-    <div class="col-xs-6 col-sm-4 col-md-3" *ngFor="let movie of movieService.getMovies()">
+    <div class="col-xs-6 col-sm-4 col-md-3" *ngFor="let movie of movies">
         <div class="featurebox">
 
             <a href="javascript:void(0)" [routerLink]="['/movie', movie.id]">
-                <div class="featurebox-thumbnail" style="max-height: 200px ">
+                <div class="featurebox-thumbnail" style="max-height: 360px ">
                     <img [src]="movie.image">
                 </div>
                 <div class="featurebox-content">
                     <header>{{movie.title}}</header>
-                    <b>{{movie.year}}</b> <br class="visible-xs">
-                    {{movie.genres | commaSeparated}}<br>
+                    <span class="single-line">
+                        <b>{{movie.year}}</b> <br class="visible-xs">
+                        {{movie.genres | commaSeparated}}
+                    </span><br>
                     <span class="hidden-xs">
                         <rating value="{{movie.rating}}" max="10"></rating>
-                        &nbsp;<b>{{movie.rating}}</b>/10
                     </span>
                 </div>
             </a>

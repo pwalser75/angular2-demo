@@ -27,14 +27,14 @@
   img {
     margin: 0;
     display: inherit;
-    transition: all 0.4s ease-out;
+    transition: all 0.5s ease-out;
     flex-shrink: 1;
     width: 100%;
   }
 }
 
 .featurebox:hover .featurebox-thumbnail img {
-  transform: scale(1.25) rotate(2deg);
+  transform: scale(1.5) rotate(2deg);
 }
 
 .featurebox-title a {
@@ -43,7 +43,7 @@
 }
 
 .featurebox-content {
-  padding: 1em 0.5em 0.5em 0.5em;
+  padding: 2em 0.5em 0.5em 0.5em;
   position: relative;
   background: #FFFFFF;
   text-overflow: ellipsis;

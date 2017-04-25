@@ -15,43 +15,32 @@ export interface Movie {
 @Injectable()
 export class MovieService {
 
-    movies: Movie[];
-    private loadingDone = new Subject <boolean>();
+    private movies: Promise<Movie[]>;
 
     constructor(http: Http) {
 
         let resource: string = "app/data/movies.json";
         console.log("Loading: " + resource);
 
-        http.get(resource)
-            .map((res: any) => res.json()).subscribe(
-            data => this.movies = data,
-            error => console.log(error),
-            () => {
-                this.loadingDone.next(true);
-                this.loadingDone = null
-            }
-        );
+        this.movies = new Promise((resolve, reject) => {
+            http.get(resource)
+                .map((res: any) => res.json()).subscribe(
+                data => resolve(data),
+                error => reject(error)
+            )
+        });
     }
 
-    getMovies(): Movie[] {
+    getMovies(): Promise<Movie[]> {
         return this.movies;
     }
 
     getMovie(id: Number): Promise<Movie> {
-        let result: Promise<Movie> = new Promise((resolve, reject) => {
-            if (this.loadingDone) {
-                this.loadingDone.subscribe(
-                    data => resolve(this.movies.find(m => m.id == id)),
-                    errror => reject("Movies not loaded")
-                );
-            } else if (this.movies) {
-                resolve(this.movies.find(m => m.id == id));
-            } else {
-                reject("Movies not loaded");
-            }
+        return new Promise((resolve, reject) => {
+            this.getMovies().then(
+                data => resolve(data.find(m => m.id == id)),
+                error => reject(error)
+            );
         });
-
-        return result;
     }
 }
