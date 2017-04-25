@@ -19,8 +19,13 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.sub = this.route.params.subscribe(params => {
             var id = +params['id']; // (+) converts string 'id' to a number
-            this.movie = this.movieService.getMovie(id);
-            this.titleService.setTitle(this.movie ? this.movie.title + "(" + this.movie.year + ")" : 'no movie');
+            this.movieService.getMovie(id).then(
+                data => {
+                    this.movie = data;
+                    this.titleService.setTitle(this.movie ? this.movie.title + "(" + this.movie.year + ")" : 'no movie');
+                },
+                error => console.log("could not load movie #" + id)
+            );
         });
     }
 

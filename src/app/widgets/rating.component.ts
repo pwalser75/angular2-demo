@@ -3,7 +3,7 @@ import {Component, Input} from "@angular/core";
 @Component({
     selector: 'rating',
     template: `
-	<span>
+	<span class="single-line">
 		<i *ngFor="let item of createRangeArray(1, getStarsFilled())" class="fa fa-star" style="color:#FFC901"></i>
 		<i *ngFor="let item of createRangeArray(getStarsFilled()+1, getStarsMax())" class="fa fa-star-o" style="color:#DDDDDD"></i>
 	</span>

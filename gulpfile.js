@@ -130,7 +130,7 @@ gulp.task('minify', () => {
 gulp.task('watch', ['build-dev'], () => {
     var watchers = [
 		gulp.watch(fileTypeMatcher(config.filetypes.javascript), [ 'compile-typescript' ]),
-		gulp.watch(fileTypeMatcher(config.filetypes.stylesheet), ['compile-stylesheets' ]),
+		gulp.watch(fileTypeMatcher(config.filetypes.stylesheet), [ 'compile-stylesheets' ]),
 		gulp.watch(fileTypeMatcher(config.filetypes.resources), [ 'copy-resources' ])
 	];
     var onChanged = function(event) {
