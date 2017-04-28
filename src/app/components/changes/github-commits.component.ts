@@ -11,7 +11,6 @@ export class GithubCommitsComponent implements OnInit {
     commits: any;
 
     constructor(private githubService: GithubService) {
-        githubService
     }
 
     ngOnInit(): void {

@@ -27,7 +27,7 @@ export class MovieService {
                 .map((res: any) => res.json()).subscribe(
                 data => resolve(data),
                 error => reject(error)
-            )
+            );
         });
     }
 
@@ -38,7 +38,7 @@ export class MovieService {
     getMovie(id: Number): Promise<Movie> {
         return new Promise((resolve, reject) => {
             this.getMovies().then(
-                data => resolve(data.find(m => m.id == id)),
+                data => resolve(data.find(m => m.id === id)),
                 error => reject(error)
             );
         });

@@ -11,6 +11,6 @@ export class GithubService {
     getCommits(githubUrl:string):Observable<Response> {
 
         return this.http.get(githubUrl + '/commits')
-            .map((res:any) => res.json())
+            .map((res:any) => res.json());
     }
 }

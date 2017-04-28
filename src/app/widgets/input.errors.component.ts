@@ -31,8 +31,10 @@ export class InputErrorsComponent implements OnChanges {
     }
 
     getFirstErrorMessageKey(errors:any):string {
-        if (!errors) return null;
-        for (let key in errors) {
+        if (!errors) {
+            return null;
+        }
+        for (let key of Object.keys(errors)) {
             return key;
         }
     }

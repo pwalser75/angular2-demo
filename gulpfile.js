@@ -14,6 +14,8 @@ const cssPrefixer = require('gulp-autoprefixer');
 const cssMinify = require('gulp-cssnano');
 const runSequence = require('run-sequence');
 const cssConcat = require('gulp-concat-css');
+const tslint = require('gulp-tslint');
+const sourcemaps = require('gulp-sourcemaps');
 
 const notify = require('gulp-notify');
 const watchify = require('watchify');
@@ -24,6 +26,7 @@ const proxy = require('proxy-middleware');
 // Configuration
 
 const config = {
+	projectName: 'Angular2 Demo',
 	source: './src',
 	target: './build/frontend',
 	temp: './build/temp',
@@ -61,14 +64,23 @@ function fileTypeMatcher(fileSuffixArray) {
 	return fileSuffixArray.map(type=> config.source+'/**/*.'+type);
 }
 
-gulp.task('copy-typescript', () => {
+gulp.task('tslint', () => {
+    return gulp.src("src/**/*.ts")
+        .pipe(tslint({
+            formatter: 'prose'
+        }))
+        .pipe(tslint.report());
+});
 
+gulp.task('compile-typescript', ["tslint"], () => {
     return gulp.src(config.source+'/**/*.ts')
+        .pipe(sourcemaps.init())
         .pipe(tsProject())
+        .pipe(sourcemaps.write(".", {sourceRoot: '/src'}))
         .pipe(gulp.dest(config.temp));
 });
 
-gulp.task('compile-typescript', [ 'copy-typescript' ], () => {
+gulp.task('build-typescript', [ 'compile-typescript' ], () => {
     var builder = new SystemBuilder();
 
     return builder.loadConfig('system.config.js')
@@ -86,18 +98,24 @@ gulp.task('compile-stylesheets', () => {
         })).on('error', sass.logError))
 		.pipe(cssPrefixer())
 		.pipe(cssConcat(config.css.target))
-		.pipe(gulp.dest(config.target));
+		.pipe(gulp.dest(config.target))
+		.pipe(browserSync.stream())
+		.pipe(notify({title: config.projectName, message: 'Compiled stylesheets', onLast: true }));;
 });
 
 gulp.task('copy-resources', () => {
 	return gulp.src(fileTypeMatcher(config.filetypes.resources))
-		.pipe(gulp.dest(config.target));
+		.pipe(gulp.dest(config.target))
+		.pipe(browserSync.stream())
+		.pipe(notify({title: config.projectName, message: 'Updated resources', onLast: true }));;
 });
 
 gulp.task('copy-libs', () => {
-    gulp.src(config.libs.bundle)
-	.pipe(concat(config.libs.target))
-    .pipe(gulp.dest(config.target));
+	return gulp.src(config.libs.bundle)
+		.pipe(concat(config.libs.target))
+		.pipe(gulp.dest(config.target))
+		.pipe(browserSync.stream())
+		.pipe(notify({title: config.projectName, message: 'Updated libraries', onLast: true }));;
 });
 
 // build targets
@@ -112,7 +130,7 @@ gulp.task('build', (callback) => {
 });
 
 gulp.task('build-dev', (callback) => {
-	 return runSequence('clean', 'compile-typescript', 'compile-stylesheets','copy-resources','copy-libs', callback);
+	 return runSequence('clean', 'build-typescript', 'compile-stylesheets','copy-resources','copy-libs', callback);
 });
 
 gulp.task('minify', () => {
@@ -128,19 +146,16 @@ gulp.task('minify', () => {
 });
 
 gulp.task('watch', ['build-dev'], () => {
-    var watchers = [
-		gulp.watch(fileTypeMatcher(config.filetypes.javascript), [ 'compile-typescript' ]),
-		gulp.watch(fileTypeMatcher(config.filetypes.stylesheet), [ 'compile-stylesheets' ]),
-		gulp.watch(fileTypeMatcher(config.filetypes.resources), [ 'copy-resources' ])
-	];
-    var onChanged = function(event) {
+    gulp.watch(fileTypeMatcher(config.filetypes.javascript), [ 'build-typescript' ])
+	.on('change', event => {
 		var message='File ' + event.path + ' was ' + event.type + '. Running tasks...';
 		console.log(message);
 		notify(message);
         browserSync.reload();
-	};
-
-    watchers.forEach(w => w.on('change', onChanged));
+	});
+	
+	gulp.watch(fileTypeMatcher(config.filetypes.stylesheet), [ 'compile-stylesheets' ]),
+	gulp.watch(fileTypeMatcher(config.filetypes.resources), [ 'copy-resources' ])
 });
 
 gulp.task('server', ['watch'], () => {
