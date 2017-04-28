@@ -22,6 +22,8 @@ import {InputComponent} from "./widgets/input-component.component";
 import {GithubService} from "./services/github.service";
 import {ChangesComponent} from "./components/changes/changes-component";
 import {GithubCommitsComponent} from "./components/changes/github-commits.component";
+import {MessagesService, Severity, Message} from "./services/messages.service";
+import {MessagesMenuComponent} from "./menu/messages-menu.component";
 
 @NgModule({
     imports: [BrowserModule, HttpModule, ReactiveFormsModule, ROUTING],
@@ -30,6 +32,7 @@ import {GithubCommitsComponent} from "./components/changes/github-commits.compon
         AppMenuComponent,
         LanguageMenuComponent,
         UserMenuComponent,
+        MessagesMenuComponent,
         WelcomeComponent,
         LoginComponent,
         MovieListComponent,
@@ -44,6 +47,7 @@ import {GithubCommitsComponent} from "./components/changes/github-commits.compon
     ],
     providers: [
         ApplicationService,
+        MessagesService,
         TranslateService,
         MovieService,
         GithubService
@@ -51,5 +55,7 @@ import {GithubCommitsComponent} from "./components/changes/github-commits.compon
     bootstrap: [AppComponent]
 })
 export class AppModule {
+
+
 }
 

@@ -1,7 +1,8 @@
 import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
-import {Subject} from 'rxjs/Subject';
-import {Observable} from 'rxjs/Observable';
+import {Subject} from "rxjs/Subject";
+import {Observable} from "rxjs/Observable";
+import {MessagesService, Severity, Message} from "./messages.service";
 
 export enum TranslateServiceEventType {
     LANGUAGE_LOADED,
@@ -24,10 +25,11 @@ export class TranslateService {
     private eventSource:Subject<TranslateServiceEvent> = new Subject<TranslateServiceEvent>();
     public events:Observable<TranslateServiceEvent> = this.eventSource.asObservable();
 
-    constructor(private http:Http) {
+    constructor(private http:Http, private messagesService: MessagesService) {
         this.supportedLanguages = {
             "en": "English",
-            "de": "Deutsch"
+            "de": "Deutsch",
+            "kg": "Klingon"
         };
         this.currentLanguage = 'en';
         this.translations = [];
@@ -39,16 +41,20 @@ export class TranslateService {
 
     loadLanguageResources(lang:string):void {
         let resource:string = "app/localization/" + lang + ".json";
-        console.log("Loading: " + resource);
 
         this.http.get(resource)
             .map((res:any) => res.json())
             .subscribe(
                 data => {
-                    this.translations[lang] = data;
+                    {
+                        this.translations[lang] = data;
+                        this.messagesService.publish(new Message(Severity.INFO, "Translation", "Loaded language: " + lang));
+                    }
                     this.emitEvent(new TranslateServiceEvent(TranslateServiceEventType.LANGUAGE_LOADED, lang));
                 },
-                error => console.log(error)
+                error => {
+                    this.messagesService.publish(new Message(Severity.ERROR, "Translation", "Failed to load language file: " + resource));
+                }
             );
     }
 

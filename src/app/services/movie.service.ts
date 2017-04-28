@@ -1,6 +1,5 @@
 import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
-import {Subject} from "rxjs/Rx";
 
 export interface Movie {
     id: number;
@@ -20,7 +19,6 @@ export class MovieService {
     constructor(http: Http) {
 
         let resource: string = "app/data/movies.json";
-        console.log("Loading: " + resource);
 
         this.movies = new Promise((resolve, reject) => {
             http.get(resource)

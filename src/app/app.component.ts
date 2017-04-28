@@ -4,6 +4,7 @@ import {Title} from "@angular/platform-browser";
 import "rxjs/add/operator/filter";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/mergeMap";
+import {MessagesService, Message, Severity} from "./services/messages.service";
 
 @Component({
     selector: 'app-component',
@@ -14,7 +15,8 @@ export class AppComponent implements OnInit {
 
     constructor(private router:Router,
                 private activatedRoute:ActivatedRoute,
-                private titleService:Title) {
+                private titleService:Title,
+                private messagesService: MessagesService) {
     }
 
     ngOnInit():void {
@@ -30,5 +32,18 @@ export class AppComponent implements OnInit {
             .filter(route => route.outlet === 'primary')
             .mergeMap(route => route.data)
             .subscribe((event) => this.titleService.setTitle(event['title']));
+
+
+        this.messagesService.events.subscribe(
+            event => {
+                if (event.message) {
+                    console.log(event.message.toString());
+                } else {
+                    console.log("Change in MessagesService");
+                }
+            }
+        );
+
+            this. messagesService.publish(new Message(Severity.INFO, "Angular2 Demo", "Application started"));
     }
 }
