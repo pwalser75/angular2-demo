@@ -10,40 +10,42 @@ export enum TranslateServiceEventType {
 }
 
 export class TranslateServiceEvent {
-    constructor(public type:TranslateServiceEventType, public data:any) {
+    constructor(public type: TranslateServiceEventType, public data: any) {
     }
 }
 
 @Injectable()
 export class TranslateService {
 
-    private currentLanguage:string;
-    private supportedLanguages:any;
-    private loadedLanguages:any[];
-    private translations:any[];
+    private currentLanguage: string;
+    private supportedLanguages: any = {
+        "en": "English",
+        "de": "Deutsch"
+    };
+    private translations: any[] = [];
 
-    private eventSource:Subject<TranslateServiceEvent> = new Subject<TranslateServiceEvent>();
-    public events:Observable<TranslateServiceEvent> = this.eventSource.asObservable();
+    private eventSource: Subject<TranslateServiceEvent> = new Subject<TranslateServiceEvent>();
+    public events: Observable<TranslateServiceEvent> = this.eventSource.asObservable();
 
-    constructor(private http:Http, private messagesService: MessagesService) {
-        this.supportedLanguages = {
-            "en": "English",
-            "de": "Deutsch",
-            "kg": "Klingon"
-        };
+    constructor(private http: Http, private messagesService: MessagesService) {
+
+        // set initial language
         this.currentLanguage = 'en';
-        this.translations = [];
 
+        // query user language and try to set it (will do so if supported)
+        this.setLanguage(navigator.language);
+
+        // load language files
         for (let lang of this.getSupportedLanguages()) {
             this.loadLanguageResources(lang);
         }
     }
 
-    loadLanguageResources(lang:string):void {
-        let resource:string = "app/localization/" + lang + ".json";
+    loadLanguageResources(lang: string): void {
+        let resource: string = "app/localization/" + lang + ".json";
 
         this.http.get(resource)
-            .map((res:any) => res.json())
+            .map((res: any) => res.json())
             .subscribe(
                 data => {
                     {
@@ -58,22 +60,22 @@ export class TranslateService {
             );
     }
 
-    setLanguage(lang:string):void {
+    setLanguage(lang: string): void {
         if (this.isSupportedLanguage(lang) && this.currentLanguage !== lang) {
             this.currentLanguage = lang;
             this.emitEvent(new TranslateServiceEvent(TranslateServiceEventType.LANGUAGE_CHANGED, lang));
         }
     }
 
-    getLanguage():string {
+    getLanguage(): string {
         return this.currentLanguage;
     }
 
-    isCurrentLanguage(lang:string):boolean {
+    isCurrentLanguage(lang: string): boolean {
         return this.currentLanguage === lang;
     }
 
-    getSupportedLanguages():string[] {
+    getSupportedLanguages(): string[] {
         var keys = [];
         for (let lang of Object.keys(this.supportedLanguages)) {
             keys.push(lang);
@@ -81,15 +83,15 @@ export class TranslateService {
         return keys;
     }
 
-    isSupportedLanguage(lang:string):boolean {
+    isSupportedLanguage(lang: string): boolean {
         return this.getSupportedLanguages().indexOf(lang) >= 0;
     }
 
-    getLanguageName(lang:string):string {
+    getLanguageName(lang: string): string {
         return this.supportedLanguages[lang];
     }
 
-    translate(key:string):string {
+    translate(key: string): string {
 
         if (!key) {
             return null;
@@ -100,7 +102,7 @@ export class TranslateService {
             return '...';
         }
         if (key) {
-            let value:any = languageMap;
+            let value: any = languageMap;
             for (let part of key.split(".")) {
                 value = value ? value[part] : null;
             }
@@ -115,7 +117,7 @@ export class TranslateService {
         }
     }
 
-    replacePlaceholders(text:string, replacements:any):string {
+    replacePlaceholders(text: string, replacements: any): string {
         if (!text || !replacements) {
             return text;
         }
@@ -125,7 +127,7 @@ export class TranslateService {
         return text;
     }
 
-    private emitEvent(event:TranslateServiceEvent) {
+    private emitEvent(event: TranslateServiceEvent) {
         if (this.eventSource && event) {
             this.eventSource.next(event);
         }
