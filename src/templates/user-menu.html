@@ -1,24 +1,17 @@
-<ul class="nav navbar-nav navbar-right">
-    <li class="dropdown" *ngIf="applicationService.user" ng-class="{ open : dd1 }" ng-init="dd1 = false"
-        ng-click="dd1 = !dd1">
-        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-user" aria-hidden="true"></i> {{applicationService.user.name}}
-            <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-            <li><a href="#">{{'menu.account-settings'|translate}}</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a (click)="applicationService.logout()">{{'menu.logout'|translate}}</a></li>
-        </ul>
-    </li>
-    <li *ngIf="!applicationService.user">
-        <a href="javascript:void(0)" (click)="applicationService.login('Test User','secret007')">
-            <i class="fa fa-user" aria-hidden="true"></i> {{'menu.register'|translate}}
-        </a>
-    </li>
-    <li *ngIf="!applicationService.user">
-        <a href="javascript:void(0)" [routerLink]="['/login']">
-            <i class="fa fa-sign-in" aria-hidden="true"></i> {{'menu.login'|translate}}
-        </a>
-    </li>
-</ul>
+<div class="nav-item popup popup-bottom-left" *ngIf="applicationService.user">
+    <i class="fa fa-user" aria-hidden="true"></i> {{applicationService.user.name}}
+    <i class="fa fa-caret-down" aria-hidden="true"></i>
+    <ul class="popup-content list">
+        <a href="#"><li>{{'menu.account-settings'|translate}}</li></a>
+        <a (click)="applicationService.logout()"><li>{{'menu.logout'|translate}}</li></a>
+    </ul>
+</div>
+<a class="nav-item" *ngIf="!applicationService.user" href="javascript:void(0)"
+   (click)="applicationService.login('Test User','secret007')">
+    <i class="fa fa-user" aria-hidden="true"></i>
+    <span class="hide-md-down"> {{'menu.register'|translate}} </span>
+</a>
+<a class="nav-item" *ngIf="!applicationService.user" href="javascript:void(0)" [routerLink]="['/login']">
+    <i class="fa fa-sign-in" aria-hidden="true"></i>
+    <span class="hide-md-down"> {{'menu.login'|translate}} </span>
+</a>

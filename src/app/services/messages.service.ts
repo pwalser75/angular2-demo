@@ -4,6 +4,7 @@ import {Observable} from "rxjs/Observable";
 
 export enum Severity {
     INFO,
+    SUCCESS,
     WARNING,
     ERROR
 }

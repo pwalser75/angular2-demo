@@ -1,89 +1,31 @@
-<div class="navbar navbar-default navbar-toolbar">
-    <div class="container">
-        <div class="btn-toolbar" role="toolbar" aria-label="...">
-            <div class="btn-group" role="group" aria-label="...">
-                <button type="button" class="btn btn-default">
-                    <i class="fa fa-fw fa-pencil" aria-hidden="true"></i> {{'general.edit'|translate}}
-                </button>
-                <button type="button" class="btn btn-default">
-                    <i class="fa fa-fw fa-print" aria-hidden="true"></i> {{'general.print'|translate}}
-                </button>
-
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-fw fa-share-alt" aria-hidden="true"></i> {{'general.share'|translate}}
-                        <b class="caret"></b>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-stack-overflow" aria-hidden="true"></i> Stack Overflow</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i> Facebook</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i> Twitter</a>
-                        </li>
-                    </ul>
+<div class="content-wrapper">
+    <div class="content">
+        <div class="card" *ngIf="movie">
+            <div class="grid gutter">
+                <div class="col-3 col-md-3 col-sm-4 col-xs-12">
+                    <div class="content">
+                        <div class="image-border" style="width: 100%; height: 360px">
+                            <img class="image-contain" [src]="movie.image">
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="btn-group" role="group" aria-label="...">
-                <button type="button" class="btn btn-default">
-                    <i class="fa fa-fw fa-pencil" aria-hidden="true"></i>
-                </button>
-                <button type="button" class="btn btn-default">
-                    <i class="fa fa-fw fa-print" aria-hidden="true"></i>
-                </button>
-
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-fw fa-share-alt" aria-hidden="true"></i>
-                        <b class="caret"></b>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-stack-overflow" aria-hidden="true"></i> Stack Overflow</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i> Facebook</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i> Twitter</a>
-                        </li>
-                    </ul>
+                <div class="col-9 col-md-9 col-sm-8 col-xs-12">
+                    <div class="content">
+                        <h1>{{movie.title}}</h1>
+                        <b>{{movie.year}}</b> | {{movie.genres | commaSeparated}}<br>
+                        <rating value="{{movie.rating}}" max="10"></rating>
+                        &nbsp;<b>{{movie.rating}}</b>/10
+                        <p>
+                        <div class="text-columns-2">
+                            {{movie.plot}}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <div class="row" *ngIf="!movie">
+            no such movie
+        </div>
     </div>
-</div>
-
-<p>
-    <div class="container">
-
-        <div class="row" *ngIf="movie">
-
-            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4">
-                <img [src]="movie.image" class="thumbnail" style="width: 100%">
-            </div>
-            <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8">
-                <h1>{{movie.title}}</h1>
-                <div class="size-l">
-                    <b>{{movie.year}}</b> | {{movie.genres | commaSeparated}}
-                </div>
-                <rating value="{{movie.rating}}" max="10"></rating>
-                &nbsp;<b>{{movie.rating}}</b>/10
-<p>
-    <br>
-    {{movie.plot}}
-</p>
-</div>
-
-<div class="row" *ngIf="!movie">
-    no such movie
-</div>
 </div>

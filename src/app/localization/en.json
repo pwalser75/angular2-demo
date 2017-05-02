@@ -59,5 +59,8 @@
   "changes": {
     "title": "Changes",
     "subtitle": "Changes on this project (Github)"
+  },
+  "messages": {
+    "clear": "clear messages"
   }
 }

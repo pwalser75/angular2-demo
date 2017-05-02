@@ -14,7 +14,7 @@ export class ApplicationService {
         this.user = {
             name: name
         };
-        this.messagesService.publish(new Message(Severity.INFO, "Login", "User " + name + " logged in"));
+        this.messagesService.publish(new Message(Severity.SUCCESS, "Login", "User " + name + " logged in"));
     }
 
     logout(): void {

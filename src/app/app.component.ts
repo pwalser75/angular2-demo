@@ -44,6 +44,6 @@ export class AppComponent implements OnInit {
             }
         );
 
-            this. messagesService.publish(new Message(Severity.INFO, "Angular2 Demo", "Application started"));
+            this. messagesService.publish(new Message(Severity.SUCCESS, "Angular2 Demo", "Application started"));
     }
 }

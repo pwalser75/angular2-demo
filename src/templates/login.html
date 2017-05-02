@@ -1,45 +1,38 @@
-<div id="title" class="wallpaper">
-    <div class="container">
-        <div class="jumbotron">
+<div id="title" class="wallpaper" style="background-image: url(images/wallpaper.jpg)">
+    <div class="content-wrapper">
+        <div class="page-title content">
             <h1>{{'login.title'|translate}}</h1>
-            <h3>{{'login.description'|translate}}</h3>
+            <h5>{{'login.description'|translate}}</h5>
         </div>
     </div>
 </div>
 
-<div class="container">
-    <form [formGroup]="form" class="form-horizontal" novalidate (ngSubmit)="login()">
-        <!--
-        <p>Form: {{ form.value | json }}</p>
-        <p>Form status: {{ form.status | json }}</p>
-        <p>User control errors: {{ form.controls.user.errors | json }}</p>
-
-        <input-component [foo]="user" [bla]=login.user"></input-component>
-
-          <i class="fa fa-id-card-o" aria-hidden="true"></i>
-          <i class="fa fa-key" aria-hidden="true"></i>
-
-          -->
-        <input-component label="login.user" [errors]="form.controls.user.errors" [control]="form.controls.user">
-            <input class="widget" type="text" formControlName="user"
-                   placeholder="{{'login.user-hint'|translate}}">
-        </input-component>
-        <input-component label="login.password" [errors]="form.controls.password.errors"
-                         [control]="form.controls.password">
-            <input class="widget" type="password" formControlName="password"
-                   placeholder="{{'login.password-hint'|translate}}">
-        </input-component>
-        <input-component label="login.remember" [errors]="form.controls.remember.errors"
-                         [control]="form.controls.remember">
-            <div class="checkbox widget">
-                <label>
-                    <input type="checkbox" formControlName="remember">
-                    <span *ngIf="form.controls.remember.value">{{'general.yes-nice'|translate}}</span>
-                    <span *ngIf="!form.controls.remember.value">{{'general.no-nice'|translate}}</span>
-                </label>
+<div class="content-wrapper">
+    <div class="content">
+            <div class="card">
+                <header>{{'login.title' | translate}}</header>
+                <form [formGroup]="form" class="inset-large" novalidate (ngSubmit)="login()">
+                <input-component label="login.user" [errors]="form.controls.user.errors"
+                                 [control]="form.controls.user">
+                    <input type="text" formControlName="user"
+                           placeholder="{{'login.user-hint'|translate}}">
+                </input-component>
+                <input-component label="login.password" [errors]="form.controls.password.errors"
+                                 [control]="form.controls.password">
+                    <input type="password" formControlName="password"
+                           placeholder="{{'login.password-hint'|translate}}">
+                </input-component>
+                <input-component [errors]="form.controls.remember.errors"
+                                 [control]="form.controls.remember">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" formControlName="remember">
+                            {{'login.remember'|translate}}
+                        </label>
+                    </div>
+                </input-component>
+                <button class="btn button-primary" [disabled]="!form.valid">{{'general.submit'|translate}}</button>
+                </form>
             </div>
-        </input-component>
-        <button class="btn btn-primary" [disabled]="!form.valid">{{'general.submit'|translate}}</button>
-
-    </form>
+    </div>
 </div>

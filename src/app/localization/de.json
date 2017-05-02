@@ -59,5 +59,8 @@
   "changes": {
     "title": "Änderungen",
     "subtitle": "Änderungen in diesem Projekt (Github)"
+  },
+  "messages": {
+    "clear": "Benachrichtigungen löschen"
   }
 }
