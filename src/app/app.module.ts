@@ -24,6 +24,7 @@ import {ChangesComponent} from "./components/changes/changes-component";
 import {GithubCommitsComponent} from "./components/changes/github-commits.component";
 import {MessagesService, Severity, Message} from "./services/messages.service";
 import {MessagesMenuComponent} from "./menu/messages-menu.component";
+import {LimitPipe} from "./pipes/limit.pipe";
 
 @NgModule({
     imports: [BrowserModule, HttpModule, ReactiveFormsModule, ROUTING],
@@ -43,6 +44,7 @@ import {MessagesMenuComponent} from "./menu/messages-menu.component";
         InputErrorsComponent,
         RatingComponent,
         CommaSeparatedPipe,
+        LimitPipe,
         TranslatePipe
     ],
     providers: [

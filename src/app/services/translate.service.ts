@@ -20,8 +20,7 @@ export class TranslateService {
     private currentLanguage: string;
     private supportedLanguages: any = {
         "en": "English",
-        "de": "Deutsch",
-        "kg": "Klingon"
+        "de": "Deutsch"
     };
     private translations: any[] = [];
 

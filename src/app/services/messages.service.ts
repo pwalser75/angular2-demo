@@ -53,7 +53,7 @@ export class MessagesService {
     }
 
     public clear(): void {
-        this.messages = new Message[0];
+        this.messages = new Array();
         this.emitEvent(new MessageServiceEvent());
     }
 
