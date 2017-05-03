@@ -85,8 +85,8 @@ gulp.task('build-typescript', [ 'compile-typescript' ], () => {
 
     return builder.loadConfig('system.config.js')
         .then(() => builder.buildStatic('app', config.target+'/'+config.javascript.target, {
-            production: false,
-            rollup: false
+            production: true,
+            rollup: true
         }));
 });
 

@@ -6,24 +6,28 @@
                 <b>Angular</b> Demo Project
             </a>
 
-            <a class="nav-item" [routerLink]="['/welcome']"><i class=" fa fa-home" aria-hidden="true"></i>
+            <a class="nav-item hide-sm-down" [routerLink]="['/welcome']"><i class=" fa fa-home" aria-hidden="true"></i>
                <span class="hide-md-down"> {{'menu.welcome'|translate}}</span>
             </a>
-            <a class="nav-item" [routerLink]="['/movies']"><i class="fa fa-film" aria-hidden="true"></i>
+            <a class="nav-item hide-sm-down" [routerLink]="['/movies']"><i class="fa fa-film" aria-hidden="true"></i>
                 <span class="hide-md-down"> {{'menu.movies'|translate}}</span>
             </a>
-            <a class="nav-item" [routerLink]="['/changes']"><i class="fa  fa-commenting-o" aria-hidden="true"></i>
+            <a class="nav-item hide-sm-down" [routerLink]="['/changes']"><i class="fa  fa-commenting-o" aria-hidden="true"></i>
                 <span class="hide-md-down"> {{'menu.changes'|translate}}</span>
             </a>
 
             <div class="pull"></div>
-            <messages-menu class="nav-group hide-sm-down"></messages-menu>
+            <messages-menu class="nav-group"></messages-menu>
             <lang-menu class="nav-group hide-sm-down" ></lang-menu>
             <user-menu class="nav-group hide-xs-down" ></user-menu>
 
 
             <div class="display-sm-down popup popup-menu-left"><i class="fa fa-bars"></i>
                 <ul class="list">
+                    <li>
+                        <lang-menu></lang-menu>
+                        <user-menu></user-menu>
+                    </li>
                     <li routerLinkActive="active">
                         <a [routerLink]="['/welcome']"><i class=" fa fa-home" aria-hidden="true"></i>
                             {{'menu.welcome'|translate}}</a>
@@ -36,9 +40,6 @@
                         <a [routerLink]="['/changes']"><i class="fa  fa-commenting-o" aria-hidden="true"></i>
                             {{'menu.changes'|translate}}</a>
                     </li>
-                    <messages-menu></messages-menu>
-                    <lang-menu></lang-menu>
-                    <user-menu></user-menu>
                 </ul>
             </div>
         </nav>

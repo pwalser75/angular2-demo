@@ -11,6 +11,15 @@ export class LimitPipe implements PipeTransform {
         if (!text || limit <= 0 || text.length <= limit) {
             return text;
         }
-        return text.substr(0, limit) + '…';
+        var result = '';
+        var tokens = text.split(' ');
+        while (tokens && result.length < limit) {
+            if (result) {
+                result += ' ';
+            }
+            result += tokens.shift();
+        }
+
+        return result + (tokens ? '…' : '');
     }
 }
