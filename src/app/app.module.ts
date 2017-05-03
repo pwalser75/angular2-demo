@@ -25,6 +25,10 @@ import {GithubCommitsComponent} from "./components/changes/github-commits.compon
 import {MessagesService, Severity, Message} from "./services/messages.service";
 import {MessagesMenuComponent} from "./menu/messages-menu.component";
 import {LimitPipe} from "./pipes/limit.pipe";
+import {DatePipe} from "./pipes/date.pipe";
+import {TimePipe} from "./pipes/time.pipe";
+import {DateTimePipe} from "./pipes/date-time.pipe";
+import {SaveURLPipe} from "./pipes/save-url.pipe";
 
 @NgModule({
     imports: [BrowserModule, HttpModule, ReactiveFormsModule, ROUTING],
@@ -43,9 +47,13 @@ import {LimitPipe} from "./pipes/limit.pipe";
         InputComponent,
         InputErrorsComponent,
         RatingComponent,
+        DatePipe,
+        TimePipe,
+        DateTimePipe,
         CommaSeparatedPipe,
         LimitPipe,
-        TranslatePipe
+        TranslatePipe,
+        SaveURLPipe
     ],
     providers: [
         ApplicationService,

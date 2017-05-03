@@ -50,7 +50,6 @@ export class TranslateService {
                 data => {
                     {
                         this.translations[lang] = data;
-                        this.messagesService.publish(new Message(Severity.INFO, "Translation", "Loaded language: " + lang));
                     }
                     this.emitEvent(new TranslateServiceEvent(TranslateServiceEventType.LANGUAGE_LOADED, lang));
                 },
@@ -99,7 +98,7 @@ export class TranslateService {
         let languageMap = this.translations[this.currentLanguage];
         if (!languageMap) {
             // not yet loaded
-            return '...';
+            return '…';
         }
         if (key) {
             let value: any = languageMap;

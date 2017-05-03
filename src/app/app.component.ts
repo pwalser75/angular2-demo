@@ -11,15 +11,15 @@ import {MessagesService, Message, Severity} from "./services/messages.service";
     templateUrl: 'templates/application.html'
 })
 export class AppComponent implements OnInit {
-    public isTestable:boolean = true;
+    public isTestable: boolean = true;
 
-    constructor(private router:Router,
-                private activatedRoute:ActivatedRoute,
-                private titleService:Title,
+    constructor(private router: Router,
+                private activatedRoute: ActivatedRoute,
+                private titleService: Title,
                 private messagesService: MessagesService) {
     }
 
-    ngOnInit():void {
+    ngOnInit(): void {
         this.router.events
             .filter(event => event instanceof NavigationEnd)
             .map(() => this.activatedRoute)
@@ -44,6 +44,6 @@ export class AppComponent implements OnInit {
             }
         );
 
-            this. messagesService.publish(new Message(Severity.SUCCESS, "Angular2 Demo", "Application started"));
+        this.messagesService.publish(new Message(Severity.SUCCESS, "Angular2 Demo", "Application started"));
     }
 }

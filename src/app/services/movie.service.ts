@@ -9,6 +9,7 @@ export interface Movie {
     rating: number;
     image: string;
     plot: string;
+    youtubeTrailerId: string;
 }
 
 @Injectable()

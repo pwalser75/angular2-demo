@@ -12,9 +12,11 @@ export enum Severity {
 export class Message {
 
     public severityName: string;
+    public timestamp: Date;
 
     constructor(public severity: Severity, public title: string, public content: string) {
         this.severityName = Severity[this.severity].toLowerCase();
+        this.timestamp = new Date();
     }
 
     toString(): string {
@@ -40,7 +42,7 @@ export class MessagesService {
     }
 
     public publish(message: Message): void {
-        this.messages.push(message);
+        this.messages.unshift(message);
         this.emitEvent(new MessageServiceEvent(message));
     }
 
