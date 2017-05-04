@@ -108,5 +108,33 @@
     "youtubeTrailerId" : "EoQuVnKhxaM",
     "image": "images/movie8.jpg",
     "plot": "A junior programmer working at the company that runs the world's most popular search engine wins a company lottery. The prize is a week at the CEO's estate/research facility. When he gets there he discovers that the boss has been working on androids with superior Artificial Intelligence. The programmers job is to test how 'human' the android is. What develops is a manipulative game between the android and the programmer."
+  },
+  {
+    "id": 9,
+    "title": "The Lego Movie",
+    "year": 2014,
+    "genres": [
+      "Animation",
+      "Action",
+      "Adventure"
+    ],
+    "rating": 7.8,
+    "youtubeTrailerId": "fZ_JOBCLF-I",
+    "image": "images/movie9.jpg",
+    "plot": "The evil plans of Lord Business to ensure order in his world with a powerful weapon is in jeopardy as a prophecy about 'Special' comes true with the discovery of 'Piece of Resistance'. With odds like Bad Cop, Micro managers and 'Man from upstairs' stacked against him during his journey to save the world; Emmett, a construction worker, has a long way to go before he succeeds."
+  },
+  {
+    "id": 10,
+    "title": "Shoot 'Em Up",
+    "year": 2007,
+    "genres": [
+      "Action",
+      "Comedy",
+      "Crime"
+    ],
+    "rating": 6.7,
+    "youtubeTrailerId" : "zV-nIlZ3XeE",
+    "image": "images/movie10.jpg",
+    "plot": "Late at night, in an unnamed U.S. city, a solitary man sits at a bus stop. A pregnant woman runs by, pursued by a man with a gun. With reluctance, the man at the bus stop rescues her and assists with the baby's delivery, while additional pursuers fire at them, including the gang's particularly nasty leader, an intuitive man named Hertz. Our hero, known only as Smith, determines to save the child and find out why Hertz wants the baby dead. At a local bordello, he tries to employ a lactating hooker to watch the child, but things quickly escalate, and this makeshift family is soon on the run. Heavy metal music calms the baby. Why? A laboratory, gun factory, and presidential campaign all figure in Smith's quest for the child's safe deliverance."
   }
 ]
