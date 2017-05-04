@@ -33,18 +33,26 @@
                         <lang-menu></lang-menu>
                         <user-menu></user-menu>
                     </li>
-                    <li routerLinkActive="active">
-                        <a [routerLink]="['/welcome']"><i class=" fa fa-home" aria-hidden="true"></i>
-                            {{'menu.welcome'|translate}}</a>
-                    </li>
-                    <li routerLinkActive="active">
-                        <a [routerLink]="['/movies']"><i class="fa fa-film" aria-hidden="true"></i>
-                            {{'menu.movies'|translate}}</a>
-                    </li>
-                    <li routerLinkActive="active">
-                        <a [routerLink]="['/changes']"><i class="fa  fa-commenting-o" aria-hidden="true"></i>
-                            {{'menu.changes'|translate}}</a>
-                    </li>
+                    <a [routerLink]="['/welcome']">
+                        <li>
+                            <i class=" fa fa-home" aria-hidden="true"></i> {{'menu.welcome'|translate}}
+                        </li>
+                    </a>
+                    <a [routerLink]="['/movies']">
+                        <li>
+                            <i class="fa fa-film" aria-hidden="true"></i> {{'menu.movies'|translate}}
+                        </li>
+                    </a>
+                    <a *ngIf="applicationService.user" [routerLink]="['/changes']">
+                        <li>
+                            <i class="fa fa-commenting-o" aria-hidden="true"></i> {{'menu.changes'|translate}}
+                        </li>
+                    </a>
+                    <a *ngIf="applicationService.user" [routerLink]="['/calendar']">
+                        <li>
+                            <i class="fa fa-calendar" aria-hidden="true"></i> {{'menu.calendar'|translate}}
+                        </li>
+                    </a>
                 </ul>
             </div>
         </nav>
