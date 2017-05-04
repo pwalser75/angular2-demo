@@ -41,6 +41,10 @@ export class MessagesService {
 
     }
 
+    public createChannel(name: string): Channel {
+        return new Channel(name, this);
+    }
+
     public publish(message: Message): void {
         this.messages.unshift(message);
         this.emitEvent(new MessageServiceEvent(message));
@@ -67,5 +71,27 @@ export class MessagesService {
         if (this.eventSource && event) {
             this.eventSource.next(event);
         }
+    }
+}
+
+export class Channel {
+
+    constructor(private name: string, private messageService: MessagesService) {
+    }
+
+    public info(message: string): void {
+        this.messageService.publish(new Message(Severity.INFO, this.name, message));
+    }
+
+    public success(message: string): void {
+        this.messageService.publish(new Message(Severity.SUCCESS, this.name, message));
+    }
+
+    public warning(message: string): void {
+        this.messageService.publish(new Message(Severity.WARNING, this.name, message));
+    }
+
+    public error(message: string): void {
+        this.messageService.publish(new Message(Severity.ERROR, this.name, message));
     }
 }

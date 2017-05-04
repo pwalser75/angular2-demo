@@ -10,17 +10,17 @@ import {TranslateService} from "../services/translate.service";
 	`
 })
 export class InputErrorsComponent implements OnChanges {
-    @Input() source:any;
+    @Input() source: any;
 
-    errorMessage:any;
+    errorMessage: any;
 
-    constructor(private translateService:TranslateService) {
+    constructor(private translateService: TranslateService) {
     }
 
-    ngOnChanges(changes:any):void {
+    ngOnChanges(changes: any): void {
 
-        var errors:any = changes.source.currentValue;
-        var key:string = this.getFirstErrorMessageKey(errors);
+        var errors: any = changes.source.currentValue;
+        var key: string = this.getFirstErrorMessageKey(errors);
         if (key) {
             var translated = this.translateService.translate("error." + key);
             this.errorMessage = this.translateService.replacePlaceholders(translated, errors[key]);
@@ -30,7 +30,7 @@ export class InputErrorsComponent implements OnChanges {
         // console.log("CHANGES: " + JSON.stringify(changes.source.currentValue));
     }
 
-    getFirstErrorMessageKey(errors:any):string {
+    getFirstErrorMessageKey(errors: any): string {
         if (!errors) {
             return null;
         }

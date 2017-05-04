@@ -1,5 +1,6 @@
 import {Component} from "@angular/core";
 import {GoogleCalendarService} from "../../services/google-calendar.service";
+import {LoginService, LoginEvent, LoginEventType} from "../../services/login.service";
 import {GoogleAuthService} from "../../services/google-auth.service";
 
 @Component({
@@ -9,27 +10,30 @@ export class CalendarComponent {
 
     appointments: Array<string>;
 
-    constructor(private authService: GoogleAuthService,
-                private calendarService: GoogleCalendarService) {
-        this.appointments = [];
-        if (authService.isAuthenticated()) {
-            this.refreshAppointments();
+    constructor(private loginService: LoginService,
+                private calendarService: GoogleCalendarService,
+                private authService: GoogleAuthService) {
+
+        if (!loginService.checkAuthenticatedRoute()) {
+            return;
         }
+
+        this.appointments = [];
+
+        loginService.events.subscribe((event: LoginEvent) => {
+            if (event.type === LoginEventType.LOGIN) {
+                this.refresh();
+            }
+            if (event.type === LoginEventType.LOGOUT) {
+                this.appointments = [];
+            }
+        });
+        this.refresh();
     }
 
-    refreshAppointments() {
-        /*
-         * loading the appointments is done asychronously. the service's loadAppointments() method
-         * returns a Promise that provides access to the newly loaded set of appointments. Updating
-         * the array of appointments triggers angular's one-way-binding between the field and the
-         * widget.
-         */
-        this.calendarService.loadAppointments().then((newAppointments: any) => {
-            // clean the array of existing appointments
-            this.appointments.splice(0, this.appointments.length);
-            // copy all new items to the array of existing appointments
-            this.appointments.push.apply(this.appointments, newAppointments);
-            console.log('displaying ' + this.appointments.length + ' appointments');
+    refresh() {
+        this.calendarService.loadAppointments().then((appointments: any) => {
+            this.appointments = appointments;
         });
     }
 }

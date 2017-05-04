@@ -1,7 +1,7 @@
 import {Component} from "@angular/core";
-import {ApplicationService} from "../../services/application.service";
 import {Router} from "@angular/router";
 import {FormBuilder, Validators, FormGroup} from "@angular/forms";
+import {LoginService} from "../../services/login.service";
 
 @Component({
     selector: 'login',
@@ -11,7 +11,7 @@ export class LoginComponent {
 
     form: FormGroup;
 
-    constructor(fb: FormBuilder, private applicationService: ApplicationService, private router: Router) {
+    constructor(fb: FormBuilder, private loginService: LoginService, private router: Router) {
         this.form = fb.group(
             {
                 "user": ['', Validators.compose(
@@ -29,10 +29,7 @@ export class LoginComponent {
 
     login(): void {
         var data = this.form.value;
-        this.applicationService.login(data.user, data.password);
-
-        //console.log("Logged in as: " + JSON.stringify(data.user) + " with credentials " +
-        //    JSON.stringify(data.password) + ", stay logged in: " + JSON.stringify(data.remember === true));
+        this.loginService.login(data.user, data.password);
         this.router.navigate(['/welcome']);
     }
 }

@@ -1,5 +1,7 @@
 import {Component} from "@angular/core";
-import {ApplicationService, User} from "../../services/application.service";
+import {ApplicationService} from "../../services/application.service";
+import {User} from "../../services/login.service";
+import {Channel, MessagesService} from "../../services/messages.service";
 
 @Component({
     selector: 'welcome',
@@ -7,15 +9,17 @@ import {ApplicationService, User} from "../../services/application.service";
 })
 export class WelcomeComponent {
 
-    title: string;
-    message: string;
+    public title: string;
+    public message: string;
+    private log: Channel;
 
-    constructor(private applicationService: ApplicationService) {
+    constructor(private applicationService: ApplicationService, messageService: MessagesService) {
+        this.log = messageService.createChannel("Application");
         this.title = "Angular2 Demo";
         this.message = "Hello from Angular";
     }
 
-    getUser(): User {
+    public getUser(): User {
         return this.applicationService.getUser();
     }
 }

@@ -6,7 +6,7 @@ import {LoginComponent} from "./components/login/login.component";
 import {ChangesComponent} from "./components/changes/changes-component";
 import {CalendarComponent} from "./components/calendar/calendar.component";
 
-const ROUTES:Routes = [
+const ROUTES: Routes = [
     {
         path: '',
         redirectTo: '/welcome',

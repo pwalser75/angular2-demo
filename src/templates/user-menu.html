@@ -8,13 +8,13 @@
         <a href="#">
             <li>{{'menu.account-settings'|translate}}</li>
         </a>
-        <a (click)="applicationService.logout()">
+        <a (click)="loginService.logout()">
             <li>{{'menu.logout'|translate}}</li>
         </a>
     </ul>
 </div>
 <a class="nav-item" *ngIf="!applicationService.user" href="javascript:void(0)"
-   (click)="applicationService.login('Test User','secret007')">
+   (click)="loginService.login('Test User','secret007')">
     <i class="fa fa-user" aria-hidden="true"></i>
     <span class="hide-md-down"> {{'menu.register'|translate}} </span>
 </a>

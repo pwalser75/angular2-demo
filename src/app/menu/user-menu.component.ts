@@ -1,5 +1,6 @@
 import {Component} from "@angular/core";
 import {ApplicationService} from "../services/application.service";
+import {LoginService} from "../services/login.service";
 
 @Component({
     selector: 'user-menu',
@@ -7,7 +8,7 @@ import {ApplicationService} from "../services/application.service";
 })
 export class UserMenuComponent {
 
-    constructor(private applicationService:ApplicationService) {
+    constructor(private applicationService: ApplicationService, private loginService: LoginService) {
     }
 
 }

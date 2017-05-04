@@ -38,8 +38,6 @@ export class AppComponent implements OnInit {
             event => {
                 if (event.message) {
                     console.log(event.message.toString());
-                } else {
-                    console.log("Change in MessagesService");
                 }
             }
         );

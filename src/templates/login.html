@@ -3,6 +3,9 @@
         <h1>{{'login.title'|translate}}</h1>
         {{'login.description'|translate}}
         <p>
+        <label class="label-green border material-shadow-1"><i class="fa fa-magic"></i> {{'login.hint'|translate}}</label>
+        <p>
+
         <form [formGroup]="form" novalidate (ngSubmit)="login()">
             <input-component label="login.user" [errors]="form.controls.user.errors"
                              [control]="form.controls.user">

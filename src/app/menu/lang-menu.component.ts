@@ -7,7 +7,7 @@ import {TranslateService} from "../services/translate.service";
 })
 export class LanguageMenuComponent {
 
-    constructor(private translateService:TranslateService) {
+    constructor(private translateService: TranslateService) {
     }
 
 }

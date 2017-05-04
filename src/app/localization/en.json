@@ -45,7 +45,8 @@
     "user-hint": "Please enter your user name",
     "password": "Password",
     "password-hint": "Please enter your password",
-    "remember": "Stay logged in"
+    "remember": "Stay logged in",
+    "hint": "Hint: as this is a test application, you can log in with any user name and password"
   },
   "welcome": {
     "title": "Welcome",
@@ -64,7 +65,8 @@
   "messages": {
     "clear": "clear messages"
   },
-  "calendar":{
-    "title": "Calendar"
+  "calendar": {
+    "title": "Calendar",
+    "authRequired": "In order to display the calendar entries (from Google Calendar), please grant the application rights in the popup dialog."
   }
 }

@@ -45,7 +45,8 @@
     "user-hint": "Bitte geben Sie ihren Benutzernamen an",
     "password": "Passwort",
     "password-hint": "Bitte geben Sie ihr Passwort ein",
-    "remember": "Eingeloggt bleiben"
+    "remember": "Eingeloggt bleiben",
+    "hint": "Da dies eine Test-App ist, dürfen Sie mit einem beliebigen Benutzernamen/Passwort einloggen."
   },
   "welcome": {
     "title": "Willkommen",
@@ -64,7 +65,8 @@
   "messages": {
     "clear": "Benachrichtigungen löschen"
   },
-  "calendar":{
-    "title": "Kalender"
+  "calendar": {
+    "title": "Kalender",
+    "authRequired": "Um die Kalendereinträge (aus Google Calendar) anzuzeigen, erteilen Sie bitte die Berechtigung im Authentisierungs-Popup."
   }
 }

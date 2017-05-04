@@ -1,19 +1,7 @@
 import {Injectable} from "@angular/core";
-import {Subject} from "rxjs/Subject";
-import {Observable} from "rxjs/Observable";
-import {MessagesService, Severity, Message} from "./messages.service";
+import {LoginService, LoginEvent, LoginEventType} from "./login.service";
 
 declare var gapi: any;
-
-export enum AuthenticationEventType {
-    LOGIN,
-    LOGOUT
-}
-
-export class AuthenticationEvent {
-    constructor(public type: AuthenticationEventType, public user: string) {
-    }
-}
 
 @Injectable()
 export class GoogleAuthService {
@@ -26,36 +14,37 @@ export class GoogleAuthService {
     public userName: string;
     public userImageUrl: string;
 
-    private eventSource: Subject<AuthenticationEvent> = new Subject<AuthenticationEvent>();
-    public events: Observable<AuthenticationEvent> = this.eventSource.asObservable();
+    constructor(private loginService: LoginService) {
 
-    constructor(private messageService: MessagesService) {
-        this.internalAuthenticate(true);
+        loginService.events.subscribe((event: LoginEvent) => {
+            if (event.type === LoginEventType.LOGOUT) {
+                this.logout();
+            }
+        });
     }
 
-    login() {
-        this.internalAuthenticate(false);
+
+    public authenticated(): Promise<any> {
+        if (this.isAuthenticated()) {
+            return Promise.resolve();
+        }
+        return this.proceedAuthentication(false)
+            .then(() => this.initializeGooglePlusAPI())
+            .then(() => this.initializeGoogleCalendarAPI())
+            .then(() => this.loadGooglePlusUserData())
+            .then((response: any) => this.setUserData(response.result.displayName, response.result.image.url))
+            .catch((error: any) => {
+                throw new Error("Authentication failed: " + JSON.stringify(error));
+            });
     }
 
     logout() {
-        this.messageService.publish(new Message(Severity.WARNING, "Google Auth", "User logged out"));
         this.setUserData(null, null);
         gapi.auth.signOut();
     }
 
     public isAuthenticated(): boolean {
         return this.userName != null;
-    }
-
-    private internalAuthenticate(immediate: boolean) {
-        return this.proceedAuthentication(immediate)
-            .then(() => this.initializeGooglePlusAPI())
-            .then(() => this.initializeGoogleCalendarAPI())
-            .then(() => this.loadGooglePlusUserData())
-            .then((response: any) => this.setUserData(response.result.displayName, response.result.image.url))
-            .catch((error: any) => {
-                this.messageService.publish(new Message(Severity.ERROR, "Google Auth", "Authentication failed: " + JSON.stringify(error)));
-            });
     }
 
     private proceedAuthentication(immediate: boolean) {
@@ -83,21 +72,18 @@ export class GoogleAuthService {
 
     private initializeGooglePlusAPI() {
         return new Promise((resolve, reject) => {
-            console.log('initialize Google Plus API');
             resolve(gapi.client.load('plus', 'v1'));
         });
     }
 
     private initializeGoogleCalendarAPI() {
         return new Promise((resolve, reject) => {
-            console.log('initialize Google Calendar API');
             resolve(gapi.client.load('calendar', 'v3'));
         });
     }
 
     private loadGooglePlusUserData() {
         return new Promise((resolve, reject) => {
-            console.log('load Google Plus data');
             resolve(gapi.client.plus.people.get({'userId': 'me'}));
         });
     }
@@ -105,17 +91,5 @@ export class GoogleAuthService {
     private setUserData(userName: string, userImageUrl: string) {
         this.userName = userName;
         this.userImageUrl = userImageUrl;
-
-        if (userName) {
-            this.emitEvent(new AuthenticationEvent(AuthenticationEventType.LOGIN, userName));
-        } else if (this.userName) {
-            this.emitEvent(new AuthenticationEvent(AuthenticationEventType.LOGOUT, null));
-        }
-    }
-
-    private emitEvent(event: AuthenticationEvent) {
-        if (this.eventSource && event) {
-            this.eventSource.next(event);
-        }
     }
 }

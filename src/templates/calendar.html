@@ -1,25 +1,31 @@
 <div class="content-wrapper">
     <div class="content">
+
+        <button class="button-primary pull-right" (click)="refresh()"><i class="fa fa-refresh"></i></button>
+
         <h1>{{'calendar.title'|translate}}</h1>
-
-        <div *ngIf="!authService.isAuthenticated()">
-            <button class="btn btn-default navbar-btn" (click)="authService.login()">
-                {{'general.login'|translate}}
-            </button>
+        <div *ngIf="!authService.userName">
+            {{'calendar.authRequired'|translate}}
         </div>
-        <div *ngIf="authService.isAuthenticated()">
-            <button class="btn btn-default navbar-btn" (click)="authService.logout()">
-                {{'general.logout'|translate}}
-            </button>
+        <div *ngIf="authService.userName">
+            <div class="grid gutter">
+
+                <div class="col-2 col-sm-4">
+                    <strong>{{authService.userName}}</strong>
+                    <br>
+                    <span class="image-border">
+                    <img *ngIf="authService.userImageUrl"
+                         [src]="authService.userImageUrl">
+                </span>
+                </div>
+                <div class="col-10 col-sm-8">
+                    <ul>
+                        <li *ngFor="let event of appointments">
+                            {{event.start | datetime}} - {{event.end | datetime}} | <strong>{{event.subject}}</strong>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-
-        <button (click)="refreshAppointments()">Calendar</button>
-        <ul>
-            <li *ngFor="let item of appointments">
-                {{item}}
-            </li>
-
-        </ul>
-
     </div>
 </div>
