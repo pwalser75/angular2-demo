@@ -31,6 +31,7 @@
     "welcome": "-> welcome.title",
     "movies": "->movies.title  ",
     "changes": "->changes.title",
+    "calendar": "-> calendar.title",
     "protected": "Geschützt",
     "register": "Registrieren",
     "account-settings": "Konto-Einstellungen",
@@ -62,5 +63,8 @@
   },
   "messages": {
     "clear": "Benachrichtigungen löschen"
+  },
+  "calendar":{
+    "title": "Kalender"
   }
 }

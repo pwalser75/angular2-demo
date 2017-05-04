@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
     "@types/core-js": "^0.9.37",
+    "@types/gapi": "0.0.31",
     "bootstrap": "^3.3.7",
     "browser-sync": "^2.18.8",
     "chai": "^3.5.0",

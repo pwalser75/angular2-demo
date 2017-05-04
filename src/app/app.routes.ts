@@ -4,6 +4,7 @@ import {MovieListComponent} from "./components/movie/movie-list.component";
 import {MovieDetailComponent} from "./components/movie/movie-detail.component";
 import {LoginComponent} from "./components/login/login.component";
 import {ChangesComponent} from "./components/changes/changes-component";
+import {CalendarComponent} from "./components/calendar/calendar.component";
 
 const ROUTES:Routes = [
     {
@@ -36,6 +37,11 @@ const ROUTES:Routes = [
         path: 'changes',
         component: ChangesComponent,
         data: {title: 'Angular2 Demo | Changes'}
+    },
+    {
+        path: 'calendar',
+        component: CalendarComponent,
+        data: {title: 'Angular2 Demo | Calendar'}
     }
 ];
 

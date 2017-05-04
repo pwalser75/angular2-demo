@@ -2,6 +2,9 @@
     <i class="fa fa-user" aria-hidden="true"></i> {{applicationService.user.name}}
     <i class="fa fa-caret-down" aria-hidden="true"></i>
     <ul class="popup-content list">
+        <div *ngIf="applicationService.user.profilePictureURL" >
+            <img [src]="applicationService.user.profilePictureURL">
+        </div>
         <a href="#">
             <li>{{'menu.account-settings'|translate}}</li>
         </a>

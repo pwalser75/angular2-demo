@@ -29,6 +29,9 @@ import {DatePipe} from "./pipes/date.pipe";
 import {TimePipe} from "./pipes/time.pipe";
 import {DateTimePipe} from "./pipes/date-time.pipe";
 import {SaveURLPipe} from "./pipes/save-url.pipe";
+import {GoogleAuthService} from "./services/google-auth.service";
+import {GoogleCalendarService} from "./services/google-calendar.service";
+import {CalendarComponent} from "./components/calendar/calendar.component";
 
 @NgModule({
     imports: [BrowserModule, HttpModule, ReactiveFormsModule, ROUTING],
@@ -44,6 +47,7 @@ import {SaveURLPipe} from "./pipes/save-url.pipe";
         MovieDetailComponent,
         ChangesComponent,
         GithubCommitsComponent,
+        CalendarComponent,
         InputComponent,
         InputErrorsComponent,
         RatingComponent,
@@ -60,7 +64,9 @@ import {SaveURLPipe} from "./pipes/save-url.pipe";
         MessagesService,
         TranslateService,
         MovieService,
-        GithubService
+        GithubService,
+        GoogleAuthService,
+        GoogleCalendarService
     ],
     bootstrap: [AppComponent]
 })
