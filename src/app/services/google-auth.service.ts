@@ -13,6 +13,8 @@ export class GoogleAuthService {
 
     public userName: string;
     public userImageUrl: string;
+    public userOccupation: string;
+    public userLocation: string;
 
     constructor(private loginService: LoginService) {
 
@@ -32,7 +34,7 @@ export class GoogleAuthService {
             .then(() => this.initializeGooglePlusAPI())
             .then(() => this.initializeGoogleCalendarAPI())
             .then(() => this.loadGooglePlusUserData())
-            .then((response: any) => this.setUserData(response.result.displayName, response.result.image.url))
+            .then((response: any) => this.processUserResult(response.result))
             .catch((error: any) => {
                 throw new Error("Authentication failed: " + JSON.stringify(error));
             });
@@ -86,6 +88,18 @@ export class GoogleAuthService {
         return new Promise((resolve, reject) => {
             resolve(gapi.client.plus.people.get({'userId': 'me'}));
         });
+    }
+
+    private processUserResult(result: any): void {
+        this.userName = result.displayName;
+        this.userImageUrl = result.image.url;
+        if (this.userImageUrl) {
+            this.userImageUrl = this.userImageUrl.split("?sz=50")[0] + "?sz=300";
+        }
+        this.userOccupation = result.occupation;
+        console.log("result.placesLived: "+JSON.stringify(result.placesLived));
+        var primaryLocation = result.placesLived.find((p: any) => p.primary);
+        this.userLocation = primaryLocation ? primaryLocation.value : '';
     }
 
     private setUserData(userName: string, userImageUrl: string) {

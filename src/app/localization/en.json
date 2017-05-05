@@ -46,7 +46,7 @@
     "password": "Password",
     "password-hint": "Please enter your password",
     "remember": "Stay logged in",
-    "hint": "Hint: as this is a test application, you can log in with any user name and password"
+    "hint": "Hint: login possible with any user name and password."
   },
   "welcome": {
     "title": "Welcome",

@@ -46,7 +46,7 @@
     "password": "Passwort",
     "password-hint": "Bitte geben Sie ihr Passwort ein",
     "remember": "Eingeloggt bleiben",
-    "hint": "Da dies eine Test-App ist, dürfen Sie mit einem beliebigen Benutzernamen/Passwort einloggen."
+    "hint": "Hinweis: einloggen mit beliebigen Benutzernamen/Passwort möglich."
   },
   "welcome": {
     "title": "Willkommen",
