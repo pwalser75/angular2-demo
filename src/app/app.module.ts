@@ -25,9 +25,6 @@ import {GithubCommitsComponent} from "./components/changes/github-commits.compon
 import {MessagesService} from "./services/messages.service";
 import {MessagesMenuComponent} from "./menu/messages-menu.component";
 import {LimitPipe} from "./pipes/limit.pipe";
-import {DatePipe} from "./pipes/date.pipe";
-import {TimePipe} from "./pipes/time.pipe";
-import {DateTimePipe} from "./pipes/date-time.pipe";
 import {SaveURLPipe} from "./pipes/save-url.pipe";
 import {GoogleAuthService} from "./services/google-auth.service";
 import {GoogleCalendarService} from "./services/google-calendar.service";
@@ -52,9 +49,6 @@ import {LoginService} from "./services/login.service";
         InputComponent,
         InputErrorsComponent,
         RatingComponent,
-        DatePipe,
-        TimePipe,
-        DateTimePipe,
         CommaSeparatedPipe,
         LimitPipe,
         TranslatePipe,

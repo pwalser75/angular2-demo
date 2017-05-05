@@ -97,7 +97,6 @@ export class GoogleAuthService {
             this.userImageUrl = this.userImageUrl.split("?sz=50")[0] + "?sz=300";
         }
         this.userOccupation = result.occupation;
-        console.log("result.placesLived: "+JSON.stringify(result.placesLived));
         var primaryLocation = result.placesLived.find((p: any) => p.primary);
         this.userLocation = primaryLocation ? primaryLocation.value : '';
     }

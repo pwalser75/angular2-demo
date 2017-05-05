@@ -11,6 +11,7 @@
     "create": "Erstellen",
     "save": "Speichern",
     "edit": "Bearbeiten",
+    "refresh": "Aktualisieren",
     "delete": "Löschen",
     "print": "Drucken",
     "share": "Teilen",
@@ -67,6 +68,7 @@
   },
   "calendar": {
     "title": "Kalender",
-    "authRequired": "Um die Kalendereinträge (aus Google Calendar) anzuzeigen, erteilen Sie bitte die Berechtigung im Authentisierungs-Popup."
+    "authRequired": "Anmeldung erforderlich, um die Kalendereinträge (aus Google Calendar) anzuzeigen.",
+    "googleSignIn": "Anmelden mit Google-Account"
   }
 }

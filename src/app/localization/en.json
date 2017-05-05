@@ -11,6 +11,7 @@
     "create": "Create",
     "save": "Save",
     "edit": "Edit",
+    "refresh": "Refresh",
     "delete": "Delete",
     "print": "Print",
     "share": "Share",
@@ -67,6 +68,7 @@
   },
   "calendar": {
     "title": "Calendar",
-    "authRequired": "In order to display the calendar entries (from Google Calendar), please grant the application rights in the popup dialog."
+    "authRequired": "Authentication required to display the calendar entries (from Google Calendar)",
+    "googleSignIn": "Authenticate with Google account"
   }
 }
