@@ -6,42 +6,44 @@ import {LoginComponent} from "./components/login/login.component";
 import {ChangesComponent} from "./components/changes/changes-component";
 import {CalendarComponent} from "./components/calendar/calendar.component";
 
+const APP_NAME="Angular2 Demo";
+
 const ROUTES: Routes = [
     {
         path: '',
         redirectTo: '/welcome',
         pathMatch: 'full',
-        data: {title: 'Angular2 Demo'}
+        data: {title: APP_NAME}
     },
     {
         path: 'welcome',
         component: WelcomeComponent,
-        data: {title: 'Angular2 Demo | Welcome'}
+        data: {title: APP_NAME+' | Welcome'}
     },
     {
         path: 'login',
         component: LoginComponent,
-        data: {title: 'Angular2 Demo | Login'}
+        data: {title: APP_NAME+' | Login'}
     },
     {
         path: 'movies',
         component: MovieListComponent,
-        data: {title: 'Angular2 Demo | Movies'}
+        data: {title: APP_NAME+' | Movies'}
     },
     {
         path: 'movie/:id',
         component: MovieDetailComponent,
-        data: {title: 'Angular2 Demo | Movie Detail'}
+        data: {title: APP_NAME+' | Movie Detail'}
     },
     {
         path: 'changes',
         component: ChangesComponent,
-        data: {title: 'Angular2 Demo | Changes'}
+        data: {title: APP_NAME+' | Changes'}
     },
     {
         path: 'calendar',
         component: CalendarComponent,
-        data: {title: 'Angular2 Demo | Calendar'}
+        data: {title: APP_NAME+' || Calendar'}
     }
 ];
 
