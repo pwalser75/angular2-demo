@@ -36,7 +36,7 @@ export class LoginService {
         this.user = {
             name: name
         };
-        this.emitEvent(new LoginEvent(LoginEventType.LOGOUT, this.user));
+        this.emitEvent(new LoginEvent(LoginEventType.LOGIN, this.user));
         this.channel.success("User " + name + " logged in");
     }
 
