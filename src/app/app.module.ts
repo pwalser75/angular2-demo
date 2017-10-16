@@ -30,6 +30,8 @@ import {GoogleAuthService} from "./services/google-auth.service";
 import {GoogleCalendarService} from "./services/google-calendar.service";
 import {CalendarComponent} from "./components/calendar/calendar.component";
 import {LoginService} from "./services/login.service";
+import {LoadingBarService} from "./services/loading-bar.service";
+import {LoadingBarComponent} from "./widgets/loading-bar.component";
 
 @NgModule({
     imports: [BrowserModule, HttpModule, ReactiveFormsModule, ROUTING],
@@ -49,6 +51,7 @@ import {LoginService} from "./services/login.service";
         InputComponent,
         InputErrorsComponent,
         RatingComponent,
+        LoadingBarComponent,
         CommaSeparatedPipe,
         LimitPipe,
         TranslatePipe,
@@ -62,7 +65,8 @@ import {LoginService} from "./services/login.service";
         GithubService,
         GoogleAuthService,
         GoogleCalendarService,
-        LoginService
+        LoginService,
+        LoadingBarService
     ],
     bootstrap: [AppComponent]
 })
