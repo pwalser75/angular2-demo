@@ -1,14 +1,14 @@
 import {Component, OnInit} from "@angular/core";
-import {Router, NavigationEnd, ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {Title} from "@angular/platform-browser";
 import "rxjs/add/operator/filter";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/mergeMap";
-import {MessagesService, Message, Severity} from "./services/messages.service";
+import {Message, MessagesService, Severity} from "./services/messages.service";
 
 @Component({
     selector: 'app-component',
-    templateUrl: 'templates/application.html'
+    templateUrl: 'application.html'
 })
 export class AppComponent implements OnInit {
     public isTestable: boolean = true;
@@ -42,6 +42,6 @@ export class AppComponent implements OnInit {
             }
         );
 
-        this.messagesService.publish(new Message(Severity.SUCCESS, "Angular2 Demo", "Application started"));
+        this.messagesService.publish(new Message(Severity.SUCCESS, "Angular Demo", "Application started"));
     }
 }

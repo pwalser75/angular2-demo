@@ -12,11 +12,11 @@
             <a class="nav-item hide-sm-down" [routerLink]="['/movies']"><i class="fa fa-film" aria-hidden="true"></i>
                 <span class="hide-md-down"> {{'menu.movies'|translate}}</span>
             </a>
-            <a *ngIf="applicationService.user" class="nav-item hide-sm-down" [routerLink]="['/changes']"><i
+            <a *ngIf="applicationService.isLoggedIn()" class="nav-item hide-sm-down" [routerLink]="['/changes']"><i
                     class="fa fa-commenting-o" aria-hidden="true"></i>
                 <span class="hide-md-down"> {{'menu.changes'|translate}}</span>
             </a>
-            <a *ngIf="applicationService.user" class="nav-item hide-sm-down" [routerLink]="['/calendar']"><i
+            <a *ngIf="applicationService.isLoggedIn()" class="nav-item hide-sm-down" [routerLink]="['/calendar']"><i
                     class="fa fa-calendar" aria-hidden="true"></i>
                 <span class="hide-md-down"> {{'menu.calendar'|translate}}</span>
             </a>
@@ -43,12 +43,12 @@
                             <i class="fa fa-film" aria-hidden="true"></i> {{'menu.movies'|translate}}
                         </li>
                     </a>
-                    <a *ngIf="applicationService.user" [routerLink]="['/changes']">
+                    <a *ngIf="applicationService.isLoggedIn()" [routerLink]="['/changes']">
                         <li>
                             <i class="fa fa-commenting-o" aria-hidden="true"></i> {{'menu.changes'|translate}}
                         </li>
                     </a>
-                    <a *ngIf="applicationService.user" [routerLink]="['/calendar']">
+                    <a *ngIf="applicationService.isLoggedIn()" [routerLink]="['/calendar']">
                         <li>
                             <i class="fa fa-calendar" aria-hidden="true"></i> {{'menu.calendar'|translate}}
                         </li>

@@ -20,4 +20,8 @@ export class ApplicationService {
     public getUser(): User {
         return this.user;
     }
+
+    public isLoggedIn(): boolean {
+        return this.user != null;
+    }
 }

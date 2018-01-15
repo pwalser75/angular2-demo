@@ -7,15 +7,15 @@
             {{'calendar.authRequired'|translate}}
         </div>
         <button class="button-primary" (click)="refresh()"><i class="fa fa-refresh"></i>
-            <span *ngIf="authService.userName">
+            <span *ngIf="authService.isAuthenticated()">
                         {{'general.refresh'|translate}}
                     </span>
-            <span *ngIf="!authService.userName">
+            <span *ngIf="!authService.isAuthenticated()">
                         {{'calendar.googleSignIn'|translate}}
                     </span>
         </button>
         <p>
-        <div *ngIf="authService.userName">
+        <div *ngIf="authService.isAuthenticated()">
             <div class="grid gutter">
 
                 <div class="col-2 col-sm-4 col-xs-12">

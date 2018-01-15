@@ -1,10 +1,10 @@
-# Angular2 demo project
-Demo project/showcase/template for Angular2.
+# Angular demo project
+Demo project/showcase/template for Angular.
 
 ![Screenshot](screenshot.png)
 
 ## Features
-- **Angular2** (4.x) with **Typescript**
+- **Angular** (5.x) with **Typescript**
 - **Build**: **Gulp/NPM** build, with supplemental **Gradle** and **Maven** build files (build a WAR, standalone, don't require a global Node.js installation)
 - **Bootstrap UI** with **FontAwesome** icons
 - **Single page application** with menu and **routing**
@@ -16,39 +16,39 @@ Demo project/showcase/template for Angular2.
 - **Widgets** (components): input-component, input-errors, rating
 - **Localization** in EN and DE with JSON files, additional languages can be added easily
 
-## Setup (Node and NPM)
+## Setup (Node and Angular CLI)
 This project requires Node.js for the build process (download 'latest' from https://nodejs.org).
 
 Install node module dependencies:
 ```
 npm install
 ```
-Install gulp on your system (run as admin user)
+Install Angular CLI on your system (run as admin user)
 ```
-npm install -g gulp
+npm install -g @angular/cli
 ```
 
-## Build / Run with Gulp
-Build and run local server (accessible on [http://localhost:3000](http://localhost:3000)):
+## Build / Run
+Build and run local server (accessible on [http://localhost:4200](http://localhost:4200)):
 ```
-gulp
+npm run-script start
 ```
 Build only (target folder: `./build`):
 ```
-gulp build
+npm run-script build
 ```
 
 ## Build / Bundle with Maven
 The project also contains a **Maven** POM, allowing it to be built using the `maven-frontend-plugin` (which does not require Node or Gulp to be pre-installed on the system). This POM can be used as a template for Java/Angular web projects, and bundles the application as a WAR file in the target folder.
 Usage:
 
-    mvn clean install
+    mvn
 	
 ## Build / Bundle with Gradle
-The project also contains a **Gradle** build descriptor, which (same as the Maven build)  bundles the application as a WAR file.
+The project also contains a **Gradle** build descriptor, which (same as the Maven build) bundles the application as a WAR file.
 Usage:
 
-    gradle build
+    gradle
 
 ## Notes
 

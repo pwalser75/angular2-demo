@@ -1,11 +1,11 @@
 import {Component} from "@angular/core";
 import {Router} from "@angular/router";
-import {FormBuilder, Validators, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {LoginService} from "../../services/login.service";
 
 @Component({
     selector: 'login',
-    templateUrl: 'templates/login.html'
+    templateUrl: 'login.html'
 })
 export class LoginComponent {
 

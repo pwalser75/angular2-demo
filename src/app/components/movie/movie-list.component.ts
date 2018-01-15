@@ -4,7 +4,7 @@ import {LoadingBarService} from "../../services/loading-bar.service";
 
 @Component({
     selector: 'movies',
-    templateUrl: 'templates/movie-list.html'
+    templateUrl: 'movie-list.html'
 })
 export class MovieListComponent implements OnInit {
 

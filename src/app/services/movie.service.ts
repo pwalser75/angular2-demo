@@ -19,7 +19,7 @@ export class MovieService {
 
     constructor(http: Http) {
 
-        let resource: string = "app/data/movies.json";
+        let resource: string = "data/movies.json";
 
         this.movies = new Promise((resolve, reject) => {
             http.get(resource)

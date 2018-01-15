@@ -2,7 +2,7 @@ import {Component} from "@angular/core";
 import {LoginService} from "../../services/login.service";
 
 @Component({
-    templateUrl: 'templates/changes.html'
+    templateUrl: 'changes.html'
 })
 export class ChangesComponent {
 

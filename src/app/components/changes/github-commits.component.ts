@@ -4,7 +4,7 @@ import {LoadingBarService} from "../../services/loading-bar.service";
 
 @Component({
     selector: 'github-commits',
-    templateUrl: 'templates/github-commits.html'
+    templateUrl: 'github-commits.html'
 })
 export class GithubCommitsComponent implements OnInit {
 
@@ -25,7 +25,7 @@ export class GithubCommitsComponent implements OnInit {
                     },
                     error => {
                         console.log(error),
-                        this.loadingService.stop();
+                            this.loadingService.stop();
                     }
                 );
         }

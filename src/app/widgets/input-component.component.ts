@@ -3,7 +3,7 @@ import {TranslateService, TranslateServiceEvent, TranslateServiceEventType} from
 
 @Component({
     selector: 'input-component',
-    templateUrl: 'templates/input-component.html'
+    templateUrl: 'input-component.html'
 })
 export class InputComponent implements OnChanges {
     @Input() name: any;

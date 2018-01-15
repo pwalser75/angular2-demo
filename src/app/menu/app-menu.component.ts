@@ -3,11 +3,11 @@ import {ApplicationService} from "../services/application.service";
 
 @Component({
     selector: 'app-menu',
-    templateUrl: 'templates/app-menu.html'
+    templateUrl: 'app-menu.html'
 })
 export class AppMenuComponent {
 
-    constructor(private applicationService: ApplicationService) {
+    constructor(public applicationService: ApplicationService) {
     }
 }
 

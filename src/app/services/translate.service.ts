@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
 import {Subject} from "rxjs/Subject";
 import {Observable} from "rxjs/Observable";
-import {MessagesService, Severity, Message} from "./messages.service";
+import {Message, MessagesService, Severity} from "./messages.service";
 import {LoadingBarService} from "./loading-bar.service";
 
 export enum TranslateServiceEventType {
@@ -43,7 +43,7 @@ export class TranslateService {
     }
 
     loadLanguageResources(lang: string): void {
-        let resource: string = "app/localization/" + lang + ".json";
+        let resource: string = "localization/" + lang + ".json";
 
         this.loadingBarService.start();
 

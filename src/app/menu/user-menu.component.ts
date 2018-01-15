@@ -4,11 +4,11 @@ import {LoginService} from "../services/login.service";
 
 @Component({
     selector: 'user-menu',
-    templateUrl: 'templates/user-menu.html'
+    templateUrl: 'user-menu.html'
 })
 export class UserMenuComponent {
 
-    constructor(private applicationService: ApplicationService, private loginService: LoginService) {
+    constructor(public applicationService: ApplicationService, public loginService: LoginService) {
     }
 
 }

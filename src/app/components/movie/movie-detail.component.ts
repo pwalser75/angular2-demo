@@ -1,11 +1,11 @@
-import {Component, OnInit, OnDestroy} from "@angular/core";
+import {Component, OnDestroy, OnInit} from "@angular/core";
 import {Title} from "@angular/platform-browser";
-import {MovieService, Movie} from "../../services/movie.service";
+import {Movie, MovieService} from "../../services/movie.service";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
     selector: 'movie',
-    templateUrl: 'templates/movie-detail.html'
+    templateUrl: 'movie-detail.html'
 })
 export class MovieDetailComponent implements OnInit, OnDestroy {
 

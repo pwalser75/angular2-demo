@@ -5,7 +5,7 @@ import {Channel, MessagesService} from "../../services/messages.service";
 
 @Component({
     selector: 'welcome',
-    templateUrl: 'templates/welcome.html'
+    templateUrl: 'welcome.html'
 })
 export class WelcomeComponent {
 
@@ -15,7 +15,7 @@ export class WelcomeComponent {
 
     constructor(private applicationService: ApplicationService, messageService: MessagesService) {
         this.log = messageService.createChannel("Application");
-        this.title = "Angular2 Demo";
+        this.title = "Angular Demo";
         this.message = "Hello from Angular";
     }
 

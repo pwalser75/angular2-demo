@@ -3,7 +3,7 @@ import {MessagesService} from "../services/messages.service";
 
 @Component({
     selector: 'messages-menu',
-    templateUrl: 'templates/messages-menu.html'
+    templateUrl: 'messages-menu.html'
 })
 export class MessagesMenuComponent {
 

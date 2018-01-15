@@ -3,11 +3,11 @@ import {TranslateService} from "../services/translate.service";
 
 @Component({
     selector: 'lang-menu',
-    templateUrl: 'templates/lang-menu.html'
+    templateUrl: 'lang-menu.html'
 })
 export class LanguageMenuComponent {
 
-    constructor(private translateService: TranslateService) {
+    constructor(public translateService: TranslateService) {
     }
 
 }

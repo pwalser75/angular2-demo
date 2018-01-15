@@ -1,10 +1,10 @@
 import {Component} from "@angular/core";
-import {GoogleCalendarService, CalendarEvent} from "../../services/google-calendar.service";
-import {LoginService, LoginEvent, LoginEventType} from "../../services/login.service";
+import {CalendarEvent, GoogleCalendarService} from "../../services/google-calendar.service";
+import {LoginEvent, LoginEventType, LoginService} from "../../services/login.service";
 import {GoogleAuthService} from "../../services/google-auth.service";
 
 @Component({
-    templateUrl: 'templates/calendar.html'
+    templateUrl: 'calendar.html'
 })
 export class CalendarComponent {
 
@@ -12,7 +12,7 @@ export class CalendarComponent {
 
     constructor(private loginService: LoginService,
                 private calendarService: GoogleCalendarService,
-                private authService: GoogleAuthService) {
+                public authService: GoogleAuthService) {
 
         if (!loginService.checkAuthenticatedRoute()) {
             return;
