@@ -23,10 +23,15 @@ node {
 	nodeModulesDir = file("${project.projectDir}")
 }
 
+task cleanDist(type: Delete) {
+	delete 'dist'
+}
+
 task reset(type: Delete) {
 	delete 'node'
 	delete 'node_modules'
 }
 
-yarn_build.dependsOn npm_install
+clean.dependsOn cleanDist
+yarn_build.dependsOn yarn_install
 war.dependsOn yarn_build
