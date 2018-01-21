@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import {MovieSearchStrategy} from "./strategies/movie.search.strategy";
 import {version} from "punycode";
+import {QuoteSearchStrategy} from "./strategies/quotes.search.strategy";
 
 export interface SearchStrategy {
 
@@ -25,8 +26,9 @@ export class SearchService {
 
     private strategies: SearchStrategy[] = [];
 
-    constructor(private movieSearchStrategy: MovieSearchStrategy) {
+    constructor(private movieSearchStrategy: MovieSearchStrategy, private quoteSearchStrategy: QuoteSearchStrategy) {
         this.strategies.push(movieSearchStrategy);
+        this.strategies.push(quoteSearchStrategy);
     }
 
     public search(query: string): Observable<SearchResult> {

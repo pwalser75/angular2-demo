@@ -12,6 +12,8 @@ export class MovieSearchResult {
 @Injectable()
 export class MovieSearchStrategy implements SearchStrategy {
 
+    private limit: number = 5;
+
     constructor(private movieService: MovieService) {
     }
 
@@ -32,8 +34,8 @@ export class MovieSearchStrategy implements SearchStrategy {
                             let matches: MovieSearchResult[] = data
                                 .filter(m => this.matches(m, query))
                                 .map(m => new MovieSearchResult(m.id, m.title, m.year, m.genres, m.image));
-                            // limit to 5 items
-                            matches=matches.slice(0, Math.min(5, matches.length));
+                            // limit number of items
+                            matches = matches.slice(0, Math.min(this.limit, matches.length));
                             observer.next(matches);
                         },
                         error => reject(error)

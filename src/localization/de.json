@@ -30,7 +30,7 @@
   },
   "search": {
     "quicksearch-title": "Schnellsuche",
-    "quicksearch-hint": "Tipp: Filme nach Titel, Jahr oder Genre (Action, Adventure, ..) suchen."
+    "quicksearch-hint": "Tipp: Filme nach Titel, Jahr oder Genre (Action, Adventure, ..) suchen. Als kleines Extra wird auch in Zitaten gesucht."
   },
   "menu": {
     "welcome": "-> welcome.title",

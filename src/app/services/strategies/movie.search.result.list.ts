@@ -3,8 +3,8 @@ import {Component, Input} from "@angular/core";
 @Component({
     selector: 'movie-search-result-list',
     template: `
-        <ul class="list list-icons" *ngFor="let movie of items">
-            <a href="javascript:void(0)" [routerLink]="['/movie', movie.id]">
+        <ul class="list list-icons">
+            <a href="javascript:void(0)" *ngFor="let movie of items" [routerLink]="['/movie', movie.id]">
                 <li>
                     <div class="list-icon">
                         <img [src]="movie.image">

@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {LoginService, LoginEvent, LoginEventType} from "./login.service";
+import {LoginEvent, LoginEventType, LoginService} from "./login.service";
 
 declare var gapi: any;
 
