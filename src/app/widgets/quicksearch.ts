@@ -14,7 +14,7 @@ import {MovieSearchResultList} from "../services/strategies/movie.search.result.
 
                     <movie-search-result-list [items]="searchResultsMap['movies']"></movie-search-result-list>
                     <hr>
-                    <quotes-search-result-list [items]="searchResultsMap['quotes']"></quotes-search-result-list>
+                    <image-search-result-list [items]="searchResultsMap['images']"></image-search-result-list>
                 </div>
             </div>
             <button class="input-widget-button">

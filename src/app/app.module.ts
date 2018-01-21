@@ -36,9 +36,8 @@ import {QuickSearchComponent} from "./widgets/quicksearch";
 import {SearchService} from "./services/search.service";
 import {MovieSearchStrategy} from "./services/strategies/movie.search.strategy";
 import {MovieSearchResultList} from "./services/strategies/movie.search.result.list";
-import {QuotesService} from "./services/quotes.service";
-import {QuotesSearchResultList} from "./services/strategies/quotes.search.result.list";
-import {QuoteSearchStrategy} from "./services/strategies/quotes.search.strategy";
+import {ImageSearchResultList} from "./services/strategies/image.search.result.list";
+import {ImagesSearchStrategy} from "./services/strategies/images.search.strategy";
 
 @NgModule({
     imports: [BrowserModule, HttpModule, ReactiveFormsModule, ROUTING],
@@ -65,7 +64,7 @@ import {QuoteSearchStrategy} from "./services/strategies/quotes.search.strategy"
         TranslatePipe,
         SaveURLPipe,
         MovieSearchResultList,
-        QuotesSearchResultList
+        ImageSearchResultList
     ],
     providers: [
         ApplicationService,
@@ -78,9 +77,8 @@ import {QuoteSearchStrategy} from "./services/strategies/quotes.search.strategy"
         GoogleCalendarService,
         LoginService,
         LoadingBarService,
-        QuotesService,
         MovieSearchStrategy,
-        QuoteSearchStrategy
+        ImagesSearchStrategy
     ],
     bootstrap: [AppComponent]
 })

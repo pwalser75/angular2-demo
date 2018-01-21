@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import {MovieSearchStrategy} from "./strategies/movie.search.strategy";
 import {version} from "punycode";
-import {QuoteSearchStrategy} from "./strategies/quotes.search.strategy";
+import {ImagesSearchStrategy} from "./strategies/images.search.strategy";
 
 export interface SearchStrategy {
 
@@ -26,9 +26,9 @@ export class SearchService {
 
     private strategies: SearchStrategy[] = [];
 
-    constructor(private movieSearchStrategy: MovieSearchStrategy, private quoteSearchStrategy: QuoteSearchStrategy) {
+    constructor(private movieSearchStrategy: MovieSearchStrategy, private imageSearchStrategy: ImagesSearchStrategy) {
         this.strategies.push(movieSearchStrategy);
-        this.strategies.push(quoteSearchStrategy);
+        this.strategies.push(imageSearchStrategy);
     }
 
     public search(query: string): Observable<SearchResult> {
@@ -53,6 +53,7 @@ export class SearchService {
                                 }
                             )
                         } else {
+                            // empty search result
                             observer.next(new SearchResult(strategy, version, []));
                         }
                     }

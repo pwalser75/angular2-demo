@@ -27,7 +27,6 @@ export class MovieSearchStrategy implements SearchStrategy {
 
         return new Observable<Object[]>(observer => {
             setTimeout(() => {
-
                 return new Promise((resolve, reject) => {
                     this.movieService.getMovies().then(
                         data => {
@@ -41,7 +40,7 @@ export class MovieSearchStrategy implements SearchStrategy {
                         error => reject(error)
                     );
                 });
-            }, 500);
+            }, 200);
         });
     }
 
