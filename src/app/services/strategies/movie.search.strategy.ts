@@ -5,7 +5,7 @@ import {Movie, MovieService} from "../movie.service";
 
 export class MovieSearchResult {
 
-    constructor(public id: number, public title: string, public year: number) {
+    constructor(public id: number, public title: string, public year: number, public genres: string[], public image: string) {
     }
 }
 
@@ -31,7 +31,9 @@ export class MovieSearchStrategy implements SearchStrategy {
                         data => {
                             let matches: MovieSearchResult[] = data
                                 .filter(m => this.matches(m, query))
-                                .map(m => new MovieSearchResult(m.id, m.title, m.year));
+                                .map(m => new MovieSearchResult(m.id, m.title, m.year, m.genres, m.image));
+                            // limit to 5 items
+                            matches=matches.slice(0, Math.min(5, matches.length));
                             observer.next(matches);
                         },
                         error => reject(error)
@@ -46,7 +48,11 @@ export class MovieSearchStrategy implements SearchStrategy {
             return false;
         }
         return query.split(" ")
-            .every(term => this.containsTerm(movie.title, term) || String(movie.year) == term);
+            .every(term =>
+                this.containsTerm(movie.title, term) || // by title
+                String(movie.year) == term || // by year
+                movie.genres.some(genre => this.containsTerm(genre, term) // by genre
+                ));
     }
 
     private containsTerm(text: string, term: string): boolean {

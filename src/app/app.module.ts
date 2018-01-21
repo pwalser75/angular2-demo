@@ -35,6 +35,7 @@ import {LoadingBarComponent} from "./widgets/loading-bar.component";
 import {QuickSearchComponent} from "./widgets/quicksearch";
 import {SearchService} from "./services/search.service";
 import {MovieSearchStrategy} from "./services/strategies/movie.search.strategy";
+import {MovieSearchResultList} from "./services/strategies/movie.search.result.list";
 
 @NgModule({
     imports: [BrowserModule, HttpModule, ReactiveFormsModule, ROUTING],
@@ -59,7 +60,8 @@ import {MovieSearchStrategy} from "./services/strategies/movie.search.strategy";
         CommaSeparatedPipe,
         LimitPipe,
         TranslatePipe,
-        SaveURLPipe
+        SaveURLPipe,
+        MovieSearchResultList
     ],
     providers: [
         ApplicationService,

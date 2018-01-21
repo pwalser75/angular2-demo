@@ -28,6 +28,10 @@
     "title": "Angular Demo",
     "description": "Hello from Angular"
   },
+  "search": {
+    "quicksearch-title": "Quick search",
+    "quicksearch-hint": "Hint: search movies by title, year, genre (action, adventure, ...)"
+  },
   "menu": {
     "welcome": "-> welcome.title",
     "movies": "-> movies.title",
