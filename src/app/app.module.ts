@@ -32,6 +32,9 @@ import {CalendarComponent} from "./components/calendar/calendar.component";
 import {LoginService} from "./services/login.service";
 import {LoadingBarService} from "./services/loading-bar.service";
 import {LoadingBarComponent} from "./widgets/loading-bar.component";
+import {QuickSearchComponent} from "./widgets/quicksearch";
+import {SearchService} from "./services/search.service";
+import {MovieSearchStrategy} from "./services/strategies/movie.search.strategy";
 
 @NgModule({
     imports: [BrowserModule, HttpModule, ReactiveFormsModule, ROUTING],
@@ -52,6 +55,7 @@ import {LoadingBarComponent} from "./widgets/loading-bar.component";
         InputErrorsComponent,
         RatingComponent,
         LoadingBarComponent,
+        QuickSearchComponent,
         CommaSeparatedPipe,
         LimitPipe,
         TranslatePipe,
@@ -61,12 +65,14 @@ import {LoadingBarComponent} from "./widgets/loading-bar.component";
         ApplicationService,
         MessagesService,
         TranslateService,
+        SearchService,
         MovieService,
         GithubService,
         GoogleAuthService,
         GoogleCalendarService,
         LoginService,
-        LoadingBarService
+        LoadingBarService,
+        MovieSearchStrategy
     ],
     bootstrap: [AppComponent]
 })
