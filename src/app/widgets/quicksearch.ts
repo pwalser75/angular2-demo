@@ -21,7 +21,7 @@ import {SearchService} from "../services/search.service";
 export class QuickSearchComponent {
 
     private text: string;
-    private showPopup: boolean;
+    public showPopup: boolean;
 
     constructor(private searchService: SearchService) {
 
