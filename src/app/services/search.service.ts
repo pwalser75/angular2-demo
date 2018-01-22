@@ -11,6 +11,8 @@ export interface SearchStrategy {
 
 export const SearchStrategyToken = new InjectionToken<SearchStrategy[]>('SearchStrategy');
 
+export const SEARCH_DELAY_MS = 250;
+
 export class SearchResult {
 
     constructor(public strategy: SearchStrategy, public version: number, public items: Object[]) {
@@ -20,16 +22,14 @@ export class SearchResult {
 @Injectable()
 export class SearchService {
 
-    private searchDelayMs: number = 250;
-
     private version: number = 0;
 
     private strategies: SearchStrategy[] = [];
 
     constructor(private injector: Injector) {
         this.strategies = this.injector.get(SearchStrategyToken);
-        console.log("Resolved " + this.strategies.length + " search strategies:");
-        this.strategies.forEach(s => console.log("- " + s.getId()));
+        console.log("Discovered search strategies:");
+        this.strategies.forEach(s => console.log(`- id=${s.getId()}, class=${s.constructor.name}`));
     }
 
     public search(query: string): Observable<SearchResult> {
@@ -59,10 +59,10 @@ export class SearchService {
                         }
                     }
                 } else {
-                    // dont't search, query was changed in the meantime.
+                    // don't search, query was changed in the meantime.
                 }
 
-            }, this.searchDelayMs);
+            }, SEARCH_DELAY_MS);
         });
     }
 }

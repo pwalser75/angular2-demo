@@ -5,7 +5,7 @@ Demo project/showcase/template for Angular.
 
 ## Features
 - **Angular** (5.x) with **Typescript**
-- **Build**: **Gulp/NPM** build, with supplemental **Gradle** and **Maven** build files (build a WAR, standalone, don't require a global Node.js installation)
+- **Build**: **Angular CLI / NPM** build, with supplemental **Gradle** and **Maven** build files (build a WAR, standalone, don't require a global Node.js installation)
 - **Bootstrap UI** with **FontAwesome** icons
 - **Single page application** with menu and **routing**
 - **Reactive forms** with **validation**
@@ -15,6 +15,7 @@ Demo project/showcase/template for Angular.
 - **Pipes**: comma-separated, translate
 - **Widgets** (components): input-component, input-errors, rating
 - **Localization** in EN and DE with JSON files, additional languages can be added easily
+- **Extension Strategies**: `SearchService` with `SearchStrategy` extensions
 
 ## Setup (Node and Angular CLI)
 This project requires Node.js for the build process (download 'latest' from https://nodejs.org).
@@ -33,7 +34,7 @@ Build and run local server (accessible on [http://localhost:4200](http://localho
 ```
 npm run-script start
 ```
-Build only (target folder: `./build`):
+Build only (target folder: `./dist`):
 ```
 npm run-script build
 ```
