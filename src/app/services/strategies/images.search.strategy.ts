@@ -5,13 +5,14 @@ import {Http} from "@angular/http";
 
 export interface ImageSearchResult {
     name: string;
+    keywords: string;
     url: string;
 }
 
 @Injectable()
 export class ImagesSearchStrategy implements SearchStrategy {
 
-    private limit: number = 3;
+    private limit: number = 4;
 
     constructor(private http: Http) {
     }
@@ -57,7 +58,8 @@ export class ImagesSearchStrategy implements SearchStrategy {
         }
         return query.split(" ")
             .every(term =>
-                image.name.indexOf(term) >= 0 // by name
+                image.name.split(/[\s\-]+/).some(s => s.startsWith(term.toLowerCase())) || // by name
+                image.keywords.split(/\s*,\s*/).some(s => s.startsWith(term.toLowerCase())) // by keyword
             );
     }
 }
