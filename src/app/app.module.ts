@@ -33,7 +33,7 @@ import {LoginService} from "./services/login.service";
 import {LoadingBarService} from "./services/loading-bar.service";
 import {LoadingBarComponent} from "./widgets/loading-bar.component";
 import {QuickSearchComponent} from "./widgets/quicksearch";
-import {SearchService} from "./services/search.service";
+import {SearchService, SearchStrategyToken} from "./services/search.service";
 import {MovieSearchStrategy} from "./services/strategies/movie.search.strategy";
 import {MovieSearchResultList} from "./services/strategies/movie.search.result.list";
 import {ImageSearchResultList} from "./services/strategies/image.search.result.list";
@@ -77,8 +77,8 @@ import {ImagesSearchStrategy} from "./services/strategies/images.search.strategy
         GoogleCalendarService,
         LoginService,
         LoadingBarService,
-        MovieSearchStrategy,
-        ImagesSearchStrategy
+        {provide: SearchStrategyToken, useClass: MovieSearchStrategy, multi: true},
+        {provide: SearchStrategyToken, useClass: ImagesSearchStrategy, multi: true},
     ],
     bootstrap: [AppComponent]
 })

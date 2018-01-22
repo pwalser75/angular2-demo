@@ -1,8 +1,6 @@
-import {Injectable} from "@angular/core";
+import {Injectable, InjectionToken, Injector} from "@angular/core";
 import {Observable} from "rxjs/Observable";
-import {MovieSearchStrategy} from "./strategies/movie.search.strategy";
 import {version} from "punycode";
-import {ImagesSearchStrategy} from "./strategies/images.search.strategy";
 
 export interface SearchStrategy {
 
@@ -10,6 +8,8 @@ export interface SearchStrategy {
 
     search(query: string): Observable<Object[]>;
 }
+
+export const SearchStrategyToken = new InjectionToken<SearchStrategy[]>('SearchStrategy');
 
 export class SearchResult {
 
@@ -26,9 +26,10 @@ export class SearchService {
 
     private strategies: SearchStrategy[] = [];
 
-    constructor(private movieSearchStrategy: MovieSearchStrategy, private imageSearchStrategy: ImagesSearchStrategy) {
-        this.strategies.push(movieSearchStrategy);
-        this.strategies.push(imageSearchStrategy);
+    constructor(private injector: Injector) {
+        this.strategies = this.injector.get(SearchStrategyToken);
+        console.log("Resolved " + this.strategies.length + " search strategies:");
+        this.strategies.forEach(s => console.log("- " + s.getId()));
     }
 
     public search(query: string): Observable<SearchResult> {
