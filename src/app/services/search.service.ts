@@ -1,4 +1,4 @@
-import {Injectable, InjectionToken, Injector} from "@angular/core";
+import {Inject, Injectable, InjectionToken} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import {version} from "punycode";
 
@@ -26,11 +26,19 @@ export class SearchService {
 
     private strategies: SearchStrategy[] = [];
 
-    constructor(private injector: Injector) {
-        this.strategies = this.injector.get(SearchStrategyToken);
+    constructor(@Inject(SearchStrategyToken) searchStrategies: SearchStrategy[]) {
+        this.strategies = searchStrategies;
         console.log("Discovered search strategies:");
         this.strategies.forEach(s => console.log(`- id=${s.getId()}, class=${s.constructor.name}`));
     }
+
+    /*  Alternative using Injector:
+
+        constructor(private injector: Injector) {
+            this.strategies = this.injector.get(SearchStrategyToken);
+            ...
+        }
+     */
 
     public search(query: string): Observable<SearchResult> {
         this.version++;
