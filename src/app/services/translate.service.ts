@@ -3,7 +3,6 @@ import {Http} from "@angular/http";
 import {Subject} from "rxjs/Subject";
 import {Observable} from "rxjs/Observable";
 import {Message, MessagesService, Severity} from "./messages.service";
-import {LoadingBarService} from "./loading-bar.service";
 
 export enum TranslateServiceEventType {
     LANGUAGE_LOADED,
@@ -28,7 +27,7 @@ export class TranslateService {
     private eventSource: Subject<TranslateServiceEvent> = new Subject<TranslateServiceEvent>();
     public events: Observable<TranslateServiceEvent> = this.eventSource.asObservable();
 
-    constructor(private http: Http, private messagesService: MessagesService, private loadingBarService: LoadingBarService) {
+    constructor(private http: Http, private messagesService: MessagesService) {
 
         // set initial language
         this.currentLanguage = 'en';
@@ -45,18 +44,14 @@ export class TranslateService {
     loadLanguageResources(lang: string): void {
         let resource: string = "localization/" + lang + ".json";
 
-        this.loadingBarService.start();
-
         this.http.get(resource)
             .map((res: any) => res.json())
             .subscribe(
                 data => {
-                    this.loadingBarService.stop();
                     this.translations[lang] = data;
                     this.emitEvent(new TranslateServiceEvent(TranslateServiceEventType.LANGUAGE_LOADED, lang));
                 },
                 error => {
-                    this.loadingBarService.stop();
                     this.messagesService.publish(new Message(Severity.ERROR, "Translation", "Failed to load language file: " + resource));
                 }
             );

@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Subject} from "rxjs/Subject";
 import {Observable} from "rxjs/Observable";
+import {NavigationEnd, NavigationStart, Router} from "@angular/router";
 
 export class LoadingBarEvent {
     constructor(public progress: number, public visible: boolean) {
@@ -26,7 +27,16 @@ export class LoadingBarService {
     private eventSource: Subject<LoadingBarEvent> = new Subject<LoadingBarEvent>();
     public events: Observable<LoadingBarEvent> = this.eventSource.asObservable();
 
-    constructor() {
+    constructor(router: Router) {
+        router.events.subscribe(e => {
+            if (e instanceof NavigationStart) {
+                this.start();
+            }
+
+            if (e instanceof NavigationEnd) {
+                this.stop();
+            }
+        });
     }
 
     // Starts the loading bar. Increases the internal usage counter, to allow concurrent access to the loading bar.
