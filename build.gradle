@@ -33,5 +33,5 @@ task reset(type: Delete) {
 }
 
 clean.dependsOn cleanDist
-yarn_build.dependsOn npm_install
+yarn_build.dependsOn yarn_install
 war.dependsOn yarn_build
