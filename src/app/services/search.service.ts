@@ -1,5 +1,5 @@
 import {Inject, Injectable, InjectionToken} from "@angular/core";
-import {Observable} from "rxjs/Observable";
+import {Observable} from "rxjs";
 import {version} from "punycode";
 
 export interface SearchStrategy {

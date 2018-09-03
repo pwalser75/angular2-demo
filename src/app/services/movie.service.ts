@@ -1,5 +1,7 @@
 import {Injectable} from "@angular/core";
-import {Http} from "@angular/http";
+import {HttpClient} from "@angular/common/http";
+import {Observable, from} from "rxjs";
+import {map} from "rxjs/operators";
 
 export interface Movie {
     id: number;
@@ -17,17 +19,10 @@ export class MovieService {
 
     private movies: Promise<Movie[]>;
 
-    constructor(http: Http) {
+    constructor(http: HttpClient) {
 
         let resource: string = "data/movies.json";
-
-        this.movies = new Promise((resolve, reject) => {
-            http.get(resource)
-                .map((res: any) => res.json()).subscribe(
-                data => resolve(data),
-                error => reject(error)
-            );
-        });
+        this.movies =http.get<Movie[]>(resource).toPromise();
     }
 
     getMovies(): Promise<Movie[]> {

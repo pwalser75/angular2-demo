@@ -48,7 +48,7 @@ export class QuickSearchComponent {
     triggerSearch() {
         this.searchService.search(this.text).subscribe(result => {
 
-            console.log("Got result :" + result.strategy.getId() + ": " + JSON.stringify(result.items));
+            console.log("Received search result :" + result.strategy.getId() + ": " + JSON.stringify(result.items));
             this.searchResultsMap[result.strategy.getId()] = result.items;
         });
     }

@@ -1,7 +1,7 @@
 import {NgModule} from "@angular/core";
-import {HttpModule} from "@angular/http";
 import {ReactiveFormsModule} from "@angular/forms";
 import {BrowserModule} from "@angular/platform-browser";
+import {HttpClientModule} from "@angular/common/http";
 import {AppComponent} from "./app.component";
 import {AppMenuComponent} from "./menu/app-menu.component";
 import {LanguageMenuComponent} from "./menu/lang-menu.component";
@@ -40,7 +40,7 @@ import {ImageSearchResultList} from "./services/strategies/image.search.result.l
 import {ImagesSearchStrategy} from "./services/strategies/images.search.strategy";
 
 @NgModule({
-    imports: [BrowserModule, HttpModule, ReactiveFormsModule, ROUTING],
+    imports: [BrowserModule, HttpClientModule, ReactiveFormsModule, ROUTING],
     declarations: [
         AppComponent,
         AppMenuComponent,

@@ -1,7 +1,8 @@
 import {Injectable} from "@angular/core";
-import {Observable} from "rxjs/Observable";
+import {HttpClient} from "@angular/common/http";
+import {from, Observable, Subject} from "rxjs";
+import {map} from "rxjs/operators";
 import {SearchStrategy} from "../search.service";
-import {Http} from "@angular/http";
 
 export interface ImageSearchResult {
     name: string;
@@ -14,7 +15,7 @@ export class ImagesSearchStrategy implements SearchStrategy {
 
     private limit: number = 4;
 
-    constructor(private http: Http) {
+    constructor(private http: HttpClient) {
     }
 
     getId(): string {
@@ -25,31 +26,19 @@ export class ImagesSearchStrategy implements SearchStrategy {
         console.log("ImagesSearchStrategy: search for " + query);
         query = query.toLowerCase();
 
-        return new Observable<Object[]>(observer => {
+        let resource: string = "data/image-search.json";
 
-            setTimeout(() => {
+        return this.http.get<ImageSearchResult[]>(resource).pipe(
+            map(
+                data => {
+                    let matches: ImageSearchResult[] = data
+                        .filter(q => this.matches(q, query));
 
-                let resource: string = "data/image-search.json";
+                    // limit number of items
+                    return matches.slice(0, Math.min(this.limit, matches.length));
+                }
+            ));
 
-                new Promise<ImageSearchResult[]>((resolve, reject) => {
-                    this.http.get(resource)
-                        .map((res: any) => res.json()).subscribe(
-                        data => resolve(data),
-                        error => reject(error)
-                    );
-                }).then(
-                    data => {
-                        let matches: ImageSearchResult[] = data
-                            .filter(q => this.matches(q, query));
-
-                        // limit number of items
-                        matches = matches.slice(0, Math.min(this.limit, matches.length));
-                        observer.next(matches);
-                    },
-                    error => observer.error(error)
-                );
-            }, 700);
-        });
     }
 
     private matches(image: any, query: string): boolean {

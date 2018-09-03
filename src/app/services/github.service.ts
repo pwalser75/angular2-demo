@@ -1,16 +1,15 @@
 import {Injectable} from "@angular/core";
-import {Http} from "@angular/http";
-import {Observable} from "rxjs/Rx";
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 @Injectable()
 export class GithubService {
 
-    constructor(private http: Http) {
+    constructor(private http: HttpClient) {
     }
 
     getCommits(githubUrl: string): Observable<Response> {
 
-        return this.http.get(githubUrl + '/commits')
-            .map((res: any) => res.json());
+        return this.http.get<Response>(githubUrl + '/commits');
     }
 }

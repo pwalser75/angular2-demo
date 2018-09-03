@@ -150,5 +150,19 @@
     "youtubeTrailerId": "qvsgGtivCgs",
     "image": "images/movie/movie11.jpg",
     "plot": "Marty McFly, a typical American teenager of the Eighties, is accidentally sent back to 1955 in a plutonium-powered DeLorean \"time machine\" invented by a slightly mad scientist. During his often hysterical, always amazing trip back in time, Marty must make certain his teenage parents-to-be meet and fall in love - so he can get back to the future. "
+  },
+  {
+    "id": 12,
+    "title": "Ant-Man and the Wasp",
+    "year": 2018,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "rating": 7.4,
+    "youtubeTrailerId": "buagoV6XuRQ",
+    "image": "images/movie/movie12.jpg",
+    "plot": "In the aftermath of «Captain America: Civil War» (2016), Scott Lang grapples with the consequences of his choices as both a superhero and a father. As he struggles to rebalance his home life with his responsibilities as Ant-Man, he's confronted by Hope van Dyne and Dr. Hank Pym with an urgent new mission. Scott must once again put on the suit and learn to fight alongside The Wasp as the team works together to uncover secrets from their past."
   }
 ]
