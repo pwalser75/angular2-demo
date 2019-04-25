@@ -1,7 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {Subject} from "rxjs";
-import {Observable} from "rxjs";
+import {Subject, Observable} from "rxjs";
 import {tap} from "rxjs/operators";
 
 import {Message, MessagesService, Severity} from "./messages.service";

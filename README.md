@@ -4,7 +4,7 @@ Demo project/showcase/template for Angular.
 ![Screenshot](screenshot.png)
 
 ## Features
-- **Angular 6** with **Typescript**
+- **Angular 7** with **Typescript**
 - **Build**: **Angular CLI / NPM** build, with supplemental **Gradle** and **Maven** build files (build a WAR, standalone, don't require a global Node.js installation)
 - **Single page application** with menu and **routing**
 - **Reactive forms** with **validation**
