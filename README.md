@@ -31,11 +31,11 @@ npm install -g @angular/cli
 ## Build / Run
 Build and run local server (accessible on [http://localhost:4200](http://localhost:4200)):
 ```
-npm run-script start
+npm run start
 ```
 Build only (target folder: `./dist`):
 ```
-npm run-script build
+npm run build
 ```
 
 ## Build / Bundle with Maven
