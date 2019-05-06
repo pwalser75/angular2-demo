@@ -1,5 +1,6 @@
 <div class="nav-item popup popup-bottom-left" *ngIf="applicationService.getUser()">
-    <i class="fa fa-user" aria-hidden="true"></i> {{applicationService.getUser().name}}
+    <i class="fa fa-user" aria-hidden="true"></i>
+    {{applicationService.getUser().name}}
     <i class="fa fa-caret-down" aria-hidden="true"></i>
     <ul class="popup-content list">
         <div *ngIf="applicationService.getUser().profilePictureURL">
@@ -14,11 +15,11 @@
     </ul>
 </div>
 <a class="nav-item" *ngIf="!applicationService.getUser()" href="javascript:void(0)"
-   (click)="loginService.login('Test User','secret007')">
-    <i class="fa fa-user" aria-hidden="true"></i>
+        (click)="loginService.login('Test User','secret007')">
+    <i class="fa fa-user" aria-hidden="true"></i>&nbsp;
     <span class="hide-md-down"> {{'menu.register'|translate}} </span>
 </a>
 <a class="nav-item" *ngIf="!applicationService.getUser()" href="javascript:void(0)" [routerLink]="['/login']">
-    <i class="fa fa-sign-in" aria-hidden="true"></i>
+    <i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;
     <span class="hide-md-down"> {{'menu.login'|translate}} </span>
 </a>

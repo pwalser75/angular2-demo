@@ -4,11 +4,11 @@
 
         <div class="grid gutter">
 
-            <div *ngFor="let movie of movies" class="col-3 col-lg-3 col-sm-6 col-xs-12">
+            <div *ngFor="let movie of movies" class="col-4 col-lg-6 col-sm-6 col-xs-12">
                 <a class="undecorated" href="javascript:void(0)" [routerLink]="['/movie', movie.id]">
                     <div class="card card-primary full-height">
                         <section class="grid gutter">
-                            <div class="col-12 col-xs-4">
+                            <div class="col-12 col-lg-4 col-md-4 col-sm-12 col-xs-3">
                                 <div class="hide-xs-down media aspectSquare">
                                     <div class="zoom-inside">
                                         <img class="image-contain" [src]="movie.image">
@@ -18,7 +18,7 @@
                                     <img class="image-contain" [src]="movie.image">
                                 </div>
                             </div>
-                            <div class="col-12 col-xs-8 content">
+                            <div class="col-12 col-lg-8 col-md-8 col-sm-12 col-xs-9 content">
                                 <h4>{{movie.title}}</h4>
                                 <div class="hide-xs">
                                     <rating value="{{movie.rating}}" max="10"></rating>
